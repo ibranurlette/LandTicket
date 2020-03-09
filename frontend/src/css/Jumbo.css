@@ -1,0 +1,469 @@
+#jumbo1{
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  height:  350px;
+  background-color: #364f6b !important;
+
+}
+.jumbo2{
+ background-color:#ffffff !important;
+ height:  500px;
+ position: absolute;
+ margin-top: 150px;
+ margin-left: 300px;
+
+}
+#transaksi{
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 100px;
+}
+#list_transaksi{
+  font-size: 30px;
+}
+#train{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  color: rgb(95,112,197);
+}
+#warning{
+  position:absolute;  
+  font-size:  60px;
+  margin-top:   33px;
+  margin-left:  20px;
+  color:  rgba(254,110,43);
+}
+#jumbo3{
+  background: #ffffff !important;
+}
+#arah{
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  position: absolute;
+  border-radius: 30px;
+  margin-left: 270px;
+  margin-top: -45px;
+}
+#hr{
+  position: absolute;
+  margin-top: -65px !important;
+  width: 810px;
+  height: 1px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+}
+#swap{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 285px;
+  margin-top: -30px;
+  color: white;
+}
+#logo{
+width: 400px !important;
+height:   200px;
+border-radius:  10px;
+margin-top: 15px;
+
+}
+#logo2{
+width: 400px !important;
+height: 200px;
+border-radius:  10px;
+position: absolute;
+margin-left: -420px;
+/*margin-top: 20px;*/
+
+}
+#ticket_saya{
+  margin-left: 100px;
+  font-size: 35px !important;
+  /*margin-top: -50px !important;*/
+  position: absolute;
+}
+.tujuan{
+  margin-top: 40px;
+}
+#time{
+  margin-top: 30px;
+}
+#stasiun{
+   margin-top: 30px;
+}
+#contack{
+   margin-top: 175px;
+}
+#no_tanda{
+  margin-top: 47px;
+  margin-left: 35px;
+}
+.tujuan_invoice{
+  margin-top: 70px;
+}
+#time_invoice{
+  margin-top: 70px;
+  /*margin-left: 20px;*/
+  margin-right: -70px;
+}
+#stasiun_invoice{
+   margin-top: 70px;
+   margin-right: -70px;
+}
+#contack_invoice{
+   margin-top: 70px;
+}
+#no_tanda_invoice{
+  margin-top: 70px;
+  margin-left: 35px;
+}
+#name_kereta{
+  text-align: center;
+}
+#no_tanda2{
+   margin-left: 40px;
+}
+#div1{
+  width: 18px;
+  height: 18px;
+  margin-top: 44px;
+  border-radius: 10px;
+  border: 1px solid #6768C1 !important;
+  margin-right: 15px;
+
+}
+#div2{
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  position: absolute;
+  margin-left: 190px;
+  margin-top: 117px;
+  border-radius: 10px;
+}
+#div3{
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  position: absolute;
+  margin-left: 198px;
+  margin-top: 64px;
+
+}
+#div4{
+  width: 18px;
+  height: 18px;
+  /*margin-top: 44px;*/
+  border-radius: 10px;
+  border: 1px solid rgb(106,102,220) !important;
+  position:absolute; 
+  margin-top:  14px;
+  margin-left:55px;
+
+
+}
+#div5{
+  width: 18px;
+  height: 18px;
+  background: rgb(106,102,220);
+  position: absolute;
+  margin-left:55px;
+  margin-top: 80px;
+  border-radius: 10px;
+}
+#div6{
+  width: 1px;
+  height: 45px;
+  background: rgb(106,102,220);
+  position: absolute;
+  margin-left:64px;
+  margin-top: 34px;
+
+}
+#kode{
+  margin-bottom: 75px;
+  margin-left: 10px;
+}
+
+#tombol_cari_kereta2{
+  position: absolute;
+  margin-left: 820px !important;
+  /*margin-bottom: 10px;*/
+  margin-top: -65px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  border-color: #79bac1 !important;
+  color: white;
+}
+#tombol_cari_kereta{
+  position: absolute;
+  margin-left: 865px !important;
+  margin-bottom: 10px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+  /*background: linear-gradient(120deg,#79bac1,#79bac1,#2a7886);*/
+  border-color: #3fc1c9 !important;
+  /*background: #3fc1c9;*/
+  color: white;
+  font-weight: bold;
+  margin-top: -53px;
+}
+#form_jumbo_ticket{
+   background-color: #EDEDED !important;
+
+}
+#form_jumbo_ticket1{
+   background-color: #EDEDED !important;
+
+}
+#form_jumbo_invoice{
+   background-color: #EDEDED !important;
+
+}
+#form_jumbo_invoice1{
+   background-color: #EDEDED !important;
+
+}
+#form_jumbo{
+   background-color: #EDEDED !important;
+
+}
+#form_jumbo1{
+   background-color: #EDEDED !important;
+
+}
+#select_jumbo{
+  width: 80px;
+}
+#bayi{
+  margin-top: -30px !important;
+  margin-left: 20px;
+}
+#bayi_select{
+  width: 80px;
+  margin-left: -40px;
+}
+#asal{
+   width: 250px !important;
+}
+#date{
+  width: 155px !important;
+}
+#pulang_pergi{
+  position: absolute;
+  /*margin-right: -80px;*/
+  margin-left: 170px;
+  margin-top: -30px;
+}
+#flex_box{
+  display: flex;
+}
+#tujuan{
+  margin-top: 5px;
+  width: 300px !important;
+}
+#judul_kereta{
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 25px;
+  margin-left: 50px;
+}
+#judul_kereta_ticket{
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 25px;
+  margin-left: 20px;
+}
+#Eksekutif, #pending{
+  margin-left: 30px;
+}
+#pending{
+  font-size: 13px;
+}
+#tiket_kereta_api{
+  font-size: 30px !important;
+}
+#pulang_pergi{
+  font-weight: bold !important;
+}
+#form_judul_kereta{
+  background: #ededed;
+}
+#card_jumbo{
+  width: 1000px;
+  margin-left: 160px;
+  background-color: white !important;
+  margin-top: -70px;
+  position: absolute;
+
+}
+#card_jumbo_ticket{
+  width: 1000px;
+  margin-left: 160px;
+  background-color: white !important;
+  margin-top: 20px;
+  position: absolute;
+}
+#pembayaran{
+  margin-left: 100px;
+  padding-top: 15px;
+}
+#pembatas{
+  width:  400px;
+  margin-left:  15px;
+  height:   40px;
+  background:   #E6E6E6;
+  position:   absolute; 
+  margin-top:   55px;
+  z-index:  1 !important;
+  background:   transparent;  
+
+}
+#pembayaran2{
+  margin-left: 100px;
+}
+#pembayaran3{
+  margin-left: 40px;
+  padding-top: 15px;
+}
+#pembayaran5{
+  margin-left: 40px;
+  padding-top: 15px;
+  font-size: 40px;
+}
+#type_train{
+  margin-left: 40px;
+}
+#tanggal{
+  margin-left: 40px;
+  font-size: 17px
+}
+#name_train{
+  margin-left: 40px;
+  font-size: 30px;
+}
+#pembayaran4{
+  padding-top: 15px;
+}
+#tombol_bayar_sekarang{
+  margin-top:  550px;
+  margin-left:  110px;
+  width:  400px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+}
+#struk{
+  width:  150px;
+  height:  150px;
+  margin-bottom:  -430px;
+  margin-left:  50px;
+  border:   2px solid rgb(106,102,220);
+}
+#struk2{
+  margin-left:  550px;
+
+}
+
+#total{
+  margin-left: 40px;
+  z-index:2 !important;
+}
+#total2{
+  z-index:  2 !important;
+}
+#total{
+  margin-top:15px;
+}
+#card_jumbo_invoice{
+  width: 695px;
+  margin-left: 95px;
+  background-color: #EDEDED !important;
+  margin-top: 190px;
+  position: absolute;
+
+}
+#card_jumbo_invoice2{
+  width: 695px;
+  margin-left: 110px;
+  background-color: #EDEDED !important;
+  margin-top: 20px;
+  position: absolute;
+
+}
+#card_jumbo_invoice3{
+  width: 400px;
+  margin-left: 110px;
+  background-color: #white !important;
+  margin-top: 430px;
+  margin-bottom:  100px;
+  position: absolute;
+
+}
+#time_travel{
+  margin-left:  100px;
+}
+#barcode{
+  width:  85px;
+  height:   85px;
+}
+#card_jumbo_invoice4{
+  position: absolute;
+  width: 400px;
+  margin-left: 850px;
+  margin-top:  -605px;
+  background-color: #EDEDED !important;
+  /*margin-top: 430px;*/
+  /*margin-bottom:  100px;*/
+}
+
+#rincian_harga{
+  position:absolute;
+  margin-left:110px;
+  margin-top:   360px;
+  font-size:  35px;
+}
+.title{
+  font-family: arial;
+  font-size: 25px;
+  font-weight: bold;
+  color: #6C757D;
+  text-shadow: 1px 1px #21243d;
+}
+@media only screen and (max-width: 360px) {
+  .title {
+    font-size: 15px;
+  }
+}
+.judul_jumbo{
+  font-size: 35px;
+  font-family: Times-New-Roman;
+  color:  #FFFFFF;
+  margin-top: 75px;
+}
+@media only screen and (max-width: 360px) {
+  .judul_jumbo {
+    font-size: 40px;
+    margin-top: 0;
+  }
+}
+.jumbo_title{
+  color: #FFFFFF;
+   font-size: 20px;
+  font-family: Times-New-Roman;
+}
+@media only screen and (max-width: 360px) {
+  .jumbo_title {
+    font-size: 30px !important;
+  }
+}
+#form_admin{
+  width: 700px;
+}
+#admin{
+  position: absolute;
+  margin-top:100px;
+  margin-left: 330px;
+}
+#botton_admin{
+  width: 400px;
+  margin-left: 150px;
+  background: linear-gradient(120deg,#3498db,#8e44ad);
+}

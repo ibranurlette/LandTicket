@@ -1,0 +1,68 @@
+import React, {
+  Component,
+  Fragment
+} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  Navbar,
+  Dropdown
+} from 'react-bootstrap';
+import profile from '../img/user2.png';
+import {
+  Link
+} from "react-router-dom";
+import {login} from '../client/_action/auth';
+import {register} from '../client/_action/auth_register';
+import {
+  connect
+} from 'react-redux';
+import { TiTicket } from 'react-icons/ti';
+import { GiPayMoney } from 'react-icons/gi';
+import { IoMdLogOut } from 'react-icons/io';
+// component Header untuk menampikan halaman header di langi page
+class Header extends Component {
+  render() {
+    const {data} = this.props.auth
+        const handleLogout = () => {
+        localStorage.clear();
+        window.location.reload(false)
+      }
+    return(
+      <Fragment >
+      <Navbar.Collapse className = "justify-content-end" >
+      <Navbar.Text >
+      <Dropdown >
+      <Dropdown.Toggle variant = "none" id = "dropdown-basic" >
+      <p id = "profile" > {data.username} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
+      </Dropdown.Toggle>
+      <Dropdown.Menu >
+      <Link to = "/ticket" >
+      <p> <TiTicket id="dropdown"/> ticket saya </p>
+      </Link>
+      <Link to = "/invoice" >
+      <p><GiPayMoney id="dropdown2"/>payment </p>
+      </Link>
+      <p onClick={handleLogout}><IoMdLogOut id="dropdown_logout" /> <Link>logout</Link> </p>
+      </Dropdown.Menu>
+      </Dropdown>
+      </Navbar.Text>
+      </Navbar.Collapse>
+      </Fragment>
+    )
+  }
+}
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (data) => dispatch(login(data)),
+    register: (data) => dispatch(register(data))
+  }
+}
+
+
+// export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

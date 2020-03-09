@@ -1,0 +1,81 @@
+
+#card_jumbo_detail{
+  position: absolute;
+  width: 700px;
+  height: 665px;
+  background-color: #EDEDED !important;
+}
+#detail_invoice, #detail_invoice2{
+	margin-left: 40px;
+}
+#detail_invoice{
+	font-size: 50px;
+}
+#detail_kereta{
+  margin-left: 40px;
+  padding-top: 15px;
+  font-size:30px;
+
+}
+#detail_barcode{
+width:  85px;
+  height:   85px;
+}
+#div{
+	margin-top: 135px;
+}
+#botton_close_detail{
+  /*position: absolute;*/
+  width: 300px;
+  margin-left: 200px;
+  margin-top: 5px;
+  background: linear-gradient(120deg,#d63447,#d63447,#f67575);
+  border:none;
+}
+#tombol_detail{
+  height: 10px;
+
+}
+
+#card_jumbo_transaksi{
+  width: 695px;
+  margin-left: 18px;
+  margin-top: 20px;
+  position: absolute;
+
+}
+#no_tanda_transaksi{
+  margin-top: -10px;
+}
+#total_detail{
+  position: absolute;
+  /*margin-top: 580px;*/
+  margin-left: 500px;
+  margin-top: -37px;
+  font-size: 20px;
+}
+#total_detail2{
+  font-size: 30px;
+  margin-left: 20px;
+}
+#hr_detail{
+  margin-top: -20px;
+}
+#div_detail{
+    background: linear-gradient(120deg,#3498db,#8e44ad);
+}
+#struk_detail{
+  width:  150px;
+  height:  150px;
+  margin-top: 180px;
+  margin-right:50px;
+  margin-left: -80px;
+  position: absolute;
+  border:   2px solid rgb(106,102,220);
+}
+#struk_detail2{
+  margin-top: 335px;
+  margin-right:50px;
+  margin-left: -70px;
+  position: absolute;
+}
