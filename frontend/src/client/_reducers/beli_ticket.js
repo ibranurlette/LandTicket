@@ -1,6 +1,4 @@
-import {
-  GET_USERS
-} from "../config/constants";
+import { BELI_TICKET } from "../config/constants";
 
 // Setup Reducer for Redux
 const initialState = {
@@ -11,21 +9,22 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `${GET_USERS}_PENDING`:
+    case `${BELI_TICKET}_PENDING`:
       return {
         ...state,
-        loading: true
+          loading: true
       };
-    case `${GET_USERS}_FULFILLED`:
+    case `${BELI_TICKET}_FULFILLED`:
       return {
         ...state,
-          loading: false,
-          data: action.payload
+        loading: false,
+        data: action.payload,
+        error: false
       };
-    case `${GET_USERS}_REJECTED`:
+    case `${BELI_TICKET}_REJECTED`:
       return {
         ...state,
-        error: action.payload.response.data.message,
+        error: true,
         loading: false
       };
     default:

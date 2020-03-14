@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Modal, Row, Col, Form, Card } from 'react-bootstrap';
 import struk from '../img/struk.jpeg';
 import qr_code from '../img/qr.png';
+import { connect } from 'react-redux';
+import { getUsers } from '../client/_action/user';
 class Modal_detail extends Component {
    state = { show: false};
 
@@ -16,6 +18,7 @@ class Modal_detail extends Component {
   };
 
   render() {
+      const data = this.props.data
     return (
       <main>
       <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_detail" size="lg">
@@ -23,29 +26,28 @@ class Modal_detail extends Component {
            <Row>
            <Col sm={5}>
           <font id="detail_invoice"><strong>invoice</strong></font><br/>
-          <small id="detail_invoice2">kode invoice: 84h736b</small><br/><br/><br/>
              <font id="detail_kereta"><strong>kereta api</strong></font>
-             <p id="tanggal">saturday 21 februari 2020</p>
+             <p id="tanggal">{data?.train?.dateStart}</p>
 
-             <font id="name_train"><strong>Argo wilis</strong></font>
-             <p id="type_train">eksekutif</p>
+             
              <p id="div4"/>
             <p id="div5"/>
             <p id="div6"/>
-             <font id="time_travel"><strong>09:00</strong></font>
-             <p id="time_travel"><small>21 feb 2020</small></p>
-             <font id="time_travel"><b>09:00</b></font>
-             <p id="time_travel"><small>21 feb 2020</small></p>
+             <font id="time_travel"><strong>{data?.train?.startTime}</strong></font>
+             <p id="time_travel"><small>{data?.train?.dateStart}</small></p>
+             <font id="time_travel"><b>{data?.train?.arrivalTime}</b></font>
+             <p id="time_travel"><small>{data?.train?.dateStart}</small></p>
 
            </Col>
           <Col sm={4}>
               <div id="div">
-               <img alt="detail_barcode" id="detail_barcode" src={qr_code}/>
-                <p id="kode">hd027dn </p>
+          <font id="name_train"><strong>{data?.train?.nameTrain}</strong></font>
+             <p id="type_train">{data?.train?.typeTrain?.name}</p>
+
               <font id="kota"><strong>jakrata</strong></font>
-             <p id=""><small>stasiun gambir</small></p>
+             <p id=""><small>{data?.train?.startStation}r</small></p>
              <font id=""><strong>surabaya</strong></font>
-             <p id=""><small>stasiun surabaya</small></p>
+             <p id=""><small>{data?.train?.destination}</small></p>
              </div>
            </Col>
 
@@ -59,29 +61,31 @@ class Modal_detail extends Component {
            <Form >
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail" >
-              <p id="no_tanda_transaksi"><strong>no tanda pengenal</strong></p>
-              <p >021 3423428457</p>
+            <div id="no_tanda_transaksi">
+              <p ><strong>name</strong></p>
+              <p >{data?.train?.user?.name}</p>
+              </div>
             </Form.Group>
-            <Form.Group as={Col} controlId="formGridEmail" >
-               <p><strong>nama pemesan</strong></p>
+            <Form.Group as={Col} controlId="formGridEmail" id="name_pemesan_detail">
+               <p><strong>{data?.train?.user?.username}</strong></p>
                <p>ibra nurlette</p>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword" >
+            <Form.Group as={Col} controlId="formGridPassword" id="phone_detail">
                <p><strong>no handphone</strong></p>
-               <p>08742789478349</p>
+               <p>{data?.train?.user?.phone}</p>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={Col} controlId="formGridPassword" id="email_detail">
                <p><strong>email</strong></p>
-               <p>ibra@gmail.com</p>
+               <p>{data?.train?.user?.email}</p>
             </Form.Group>
           </Form.Row>
         </Form>
         <hr id="hr_detail"/>
         <div id="div_detail">
         <font id="total_detail2"><strong>Total</strong></font>
-        <p id="total_detail"><b>Rp. 12500000</b></p>
+        <p id="total_detail"><b>Rp. {data.Total_price}</b></p>
         </div>
 
 
@@ -89,15 +93,13 @@ class Modal_detail extends Component {
             Close
           </Button>
           </Card>
-        </Modal>
+        </Modal>  
        <Button onClick={this.showModalLogin} variant="info" id="tombol_detail">
         detail</Button>
       </main>
     );
   }
 }
-
-
 export default Modal_detail;
 
 

@@ -32,7 +32,6 @@ class Modal_login extends Component {
   }
   render() {
     const {authenticated, error} = this.props.auth;
-    // console.log(this.props.auth)
     return (
       <main>
       <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_box_login" >

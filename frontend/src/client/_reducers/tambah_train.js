@@ -1,6 +1,4 @@
-import {
-  GET_USERS
-} from "../config/constants";
+import { TAMBAH_TRAIN } from "../config/constants";
 
 // Setup Reducer for Redux
 const initialState = {
@@ -11,21 +9,22 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `${GET_USERS}_PENDING`:
+    case `${TAMBAH_TRAIN}_PENDING`:
       return {
         ...state,
-        loading: true
+          loading: true
       };
-    case `${GET_USERS}_FULFILLED`:
+    case `${TAMBAH_TRAIN}_FULFILLED`:
       return {
         ...state,
           loading: false,
-          data: action.payload
+        data: action.payload,
+        error: false,
       };
-    case `${GET_USERS}_REJECTED`:
+    case `${TAMBAH_TRAIN}_REJECTED`:
       return {
         ...state,
-        error: action.payload.response.data.message,
+        error: true,
         loading: false
       };
     default:

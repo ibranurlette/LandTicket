@@ -46,6 +46,7 @@ class Modal_register extends Component {
           <Modal show={this.state.show} handleClose={this.hideModalRegister} className="modal_box_regist">
         <form class="login-form_register" autocomplete="of">
         <h1 id="judul_register">Register</h1>
+        <h4 className="error">{error}</h4>
         <div class="txtb">
           <input type="text" placeholder="name" name="name" onChange={this.onChange} autocomplete="of" required/>
         </div>

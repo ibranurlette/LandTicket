@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal } from 'react-bootstrap';
 import {Link} from "react-router-dom";
-
+import { connect } from 'react-redux';
+import { updatePayment } from '../client/_action/update_payment';
 
 // component modal_login untuk manampilkan modal saat tombol login di klik
-class Modal_login extends Component {
-   state = { show: false};
+class Modal_edit extends Component {
+   state = { show: false, status:this.props.data.status};
 
     showModalLogin = () => {
     this.setState({ show: true });
@@ -16,8 +17,29 @@ class Modal_login extends Component {
     let ibra = this.setState({ show: false });
     setInterval(ibra, 500)
   };
+  HandleChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    this.setState({status:value})
+    console.log(value, "value")
+  }
+  handleUpdate = e =>{
+    e.preventDefault();
+    const id =this.props.data.id;
+    // const qty= "100";
+    // const Total_price= "45000";
+    const status= this.state.status;
+    // const attachment= "19.png";
+    const data2 = {
+       status
+    }
+    this.props.updatePayment(id, data2);
+    window.location.reload(false)
+
+  }
 
   render() {
+     const data = this.props.data
     return (
       <main>
       <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_box_login1" >
@@ -26,24 +48,18 @@ class Modal_login extends Component {
         <h1>edit form</h1>
 
         <div class="txtb1">
-          <input type="text" placeholder="no"  />
-        </div>
-
-        <div class="txtb1">
-          <input type="text" placeholder="user" />
+          <input type="text" placeholder="user" value={data?.user?.name}/>
         </div>
         <div class="txtb1">
-          <input type="text" placeholder="ticket" />
+          <input type="text" placeholder="ticket" value={data?.train?.startStation}/>
         </div>
         <div class="txtb1">
-          <input type="text" placeholder="bukti tranfer" />
+          <input type="text" placeholder="bukti tranfer" value="1.jpg"/>
         </div>
         <div class="txtb1">
-          <input type="text" placeholder="status payment" />
+          <input type="text" placeholder="status payment" value={this.state.status} name="status" onChange={this.HandleChange}/>
         </div>
-          <Link to="/home">
-        <input type="submit" class="logbtn_login1" value="update"/>
-          </Link>
+        <input type="submit" class="logbtn_login1" value="update" onClick={e=>this.handleUpdate(e)}/>
         <input type="submit" class="logbtn_close1" value="Close"/>
       </form>
         </Modal>
@@ -54,8 +70,18 @@ class Modal_login extends Component {
   }
 }
 
-
-export default Modal_login;
+const mapStateToProps = state => {
+  return {
+    update_payment: state.update_payment
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePayment: (id,data) => dispatch(updatePayment(id, data))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Modal_edit);
+// export default Modal_edit;
 
 
 

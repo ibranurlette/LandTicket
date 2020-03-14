@@ -1,6 +1,4 @@
-import {
-  GET_USERS
-} from "../config/constants";
+import { UPDATE_PAYMENT } from "../config/constants";
 
 // Setup Reducer for Redux
 const initialState = {
@@ -11,21 +9,21 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `${GET_USERS}_PENDING`:
+    case `${UPDATE_PAYMENT}_PENDING`:
       return {
         ...state,
-        loading: true
+          loading: true
       };
-    case `${GET_USERS}_FULFILLED`:
+    case `${UPDATE_PAYMENT}_FULFILLED`:
       return {
         ...state,
           loading: false,
-          data: action.payload
+        data: action.payload
       };
-    case `${GET_USERS}_REJECTED`:
+    case `${UPDATE_PAYMENT}_REJECTED`:
       return {
         ...state,
-        error: action.payload.response.data.message,
+        error: true,
         loading: false
       };
     default:

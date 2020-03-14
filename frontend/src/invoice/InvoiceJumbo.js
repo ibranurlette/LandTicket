@@ -11,7 +11,7 @@ class Jumbo extends Component  {
       <Fragment>
           <br/><br/><br/><br/><br/>
             <Col>
-            <div id="ticket_saya">Tiket saya</div>
+            <div id="ticket_saya">Tiket saya1</div>
             <br/><br/>
             <Card id="card_jumbo_invoice">
            <Form id="form_jumbo_invoice">
@@ -49,8 +49,8 @@ class Jumbo extends Component  {
            <Row>
             <div id="pembatas"/>
            <Col sm={8}>
-             <p id="pembayaran3">agro wilis dewasa</p>
-             <p id="total">total</p>
+             <p id="pembayaran3"><strong>agro wilis</strong></p>
+             <p id="total"><strong>total</strong></p>
 
            </Col>
           <Col sm={4}>

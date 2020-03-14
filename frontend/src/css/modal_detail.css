@@ -2,7 +2,7 @@
 #card_jumbo_detail{
   position: absolute;
   width: 700px;
-  height: 665px;
+  height: 500px;
   background-color: #EDEDED !important;
 }
 #detail_invoice, #detail_invoice2{
@@ -22,21 +22,25 @@ width:  85px;
   height:   85px;
 }
 #div{
-	margin-top: 135px;
+	margin-top: 75px;
 }
 #botton_close_detail{
-  /*position: absolute;*/
-  width: 300px;
-  margin-left: 200px;
-  margin-top: 5px;
+  width: 700px;
+  margin-top: 3px;
+  height: 50px;
+  margin-left: -1px;
   background: linear-gradient(120deg,#d63447,#d63447,#f67575);
   border:none;
 }
-#tombol_detail{
-  height: 10px;
-
+#name_pemesan_detail{
+  margin-right: -50px;
 }
-
+#phone_detail{
+  margin-right: -50px;
+}
+#email_detail{
+  margin-right: -60px;
+}
 #card_jumbo_transaksi{
   width: 695px;
   margin-left: 18px;
@@ -45,7 +49,7 @@ width:  85px;
 
 }
 #no_tanda_transaksi{
-  margin-top: -10px;
+  margin-left: 15px;
 }
 #total_detail{
   position: absolute;
@@ -62,20 +66,26 @@ width:  85px;
   margin-top: -20px;
 }
 #div_detail{
-    background: linear-gradient(120deg,#3498db,#8e44ad);
+    background: #d1cebd;
 }
 #struk_detail{
   width:  150px;
   height:  150px;
-  margin-top: 180px;
-  margin-right:50px;
-  margin-left: -80px;
+  margin-top: 130px;
+  /*margin-right:40px;*/
+  margin-left: -50px;
   position: absolute;
   border:   2px solid rgb(106,102,220);
 }
 #struk_detail2{
-  margin-top: 335px;
-  margin-right:50px;
-  margin-left: -70px;
+  margin-top: 285px;
+  /*margin-right:50px;*/
+  margin-left: -40px;
   position: absolute;
+}
+#div_beli2{
+  background: #d1cebd;
+}
+#name_train, #type_train{
+  margin-left: -2px;
 }

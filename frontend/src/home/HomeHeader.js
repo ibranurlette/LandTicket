@@ -33,7 +33,7 @@ class Header extends Component {
       <Navbar.Text >
       <Dropdown >
       <Dropdown.Toggle variant = "none" id = "dropdown-basic" >
-      <p id = "profile" > {data.username} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
+      <p id = "profile" > {data?.username} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
       </Dropdown.Toggle>
       <Dropdown.Menu >
       <Link to = "/ticket" >

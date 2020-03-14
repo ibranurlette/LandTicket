@@ -9,10 +9,11 @@ import HeaderNav from '../home/HomeHeader';
 
 import {connect} from 'react-redux';
 import {login} from '../client/_action/auth';
+import { Redirect} from "react-router-dom";
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
   render() {
-    const {isLogin} = this.props.auth
+    const {data, isLogin} = this.props.auth
     return (
       <Fragment>
         <Navbar className="header shadow">
@@ -24,7 +25,9 @@ class Header extends Component {
             <Navbar.Text>
             </Navbar.Text>
           </Navbar.Collapse>
-          {isLogin ? (
+            {data?.status === "1" ? (
+              <Redirect to="/transaksi"/>
+              ) : isLogin ? (
             <HeaderNav/>
             ): (
             <Fragment>
