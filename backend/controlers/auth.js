@@ -34,19 +34,19 @@ try{
   const {name, username, email, password, gender,phone, addres} = req.body;
    const salt = await bcrypt.genSalt(saltRounds);
    const hash = await bcrypt.hash(password, salt);
+   const status = "0";
 
-
-  const user1 = await User.findOne({where: { email } });
+  const user1 = await User.findOne({where: { username } });
   if(user1) {
-    res.status(401).send({status:false, message: "this email has been used "});
+    res.status(401).send({status:false, message: "this username has been used "});
   }else{
     const userKirim = await User.create({
-       name, username, email, password:hash, gender, phone, addres
+       name, username, email, password:hash, gender, phone, addres, status
     });
     const user = userKirim.dataValues.id;
  if(userKirim){
  const token = jwt.sign({ user_id: userKirim.id}, process.env.SECRET_KEY);
-  res.status(200).send({email, token,  message: "success register"});
+  res.status(200).send({username, token,  message: "success register"});
  }else{
   res.status(401).send({status: false, message: 'register gagal'});
  }

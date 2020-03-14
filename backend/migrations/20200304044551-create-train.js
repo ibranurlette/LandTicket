@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       dateStart: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.STRING
       },
       startStation: {
         type: Sequelize.STRING

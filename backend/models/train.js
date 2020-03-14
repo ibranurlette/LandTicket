@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     nameTrain: DataTypes.STRING,
     user_id: DataTypes.INTEGER,
     typeTrain_id: DataTypes.INTEGER,
-    dateStart: DataTypes.DATEONLY,
+    dateStart: DataTypes.STRING,
     startStation: DataTypes.STRING,
     startTime: DataTypes.TIME,
     destination: DataTypes.STRING,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       as: "typeTrain",
       foreignKey: "typeTrain_id"
     });
-      train.belongsTo(models.user, {
+    train.belongsTo(models.user, {
       as: "user",
       foreignKey: "user_id"
     });

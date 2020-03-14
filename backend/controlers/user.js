@@ -11,7 +11,7 @@ exports.get_user = async (req, res) => {
       where: {id},
       attributes: { exclude: ["password","createdAt", "updatedAt"] }
        });
-    res.status(200).send( {message: "success to find data users", data});
+    res.status(200).send(data);
   } catch (err) {
     console.log(err);
   }

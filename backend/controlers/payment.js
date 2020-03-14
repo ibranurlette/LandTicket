@@ -7,37 +7,74 @@ const Payment = models.payment;
 
 exports.geAll_payment = async (req, res) => {
 	try{
-		const payment = await Payment.findAll({
+		const data = await Payment.findAll({
 			include: [
 			{
 				model:Ticket,
 				as:"train",
-				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id"]
+				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "qty", "user_id"],
+				include: [
+				{
+					model:Type,
+					as:"typeTrain",
+					attributes: ["id", "name"]
+				},
+				{
+					model:User,
+					as:"user",
+					attributes: ["id","name","username","email","password","gender","phone","addres"]
+				}
+				]
+			},
+			{
+					model:User,
+					as:"user",
+					attributes: ["id","name","username","email","password","gender","phone","addres"]
 			}
 			],
 			attributes: {exclude: ["createdAt", "updatedAt"]}
 		});
-		res.send(payment)
+		res.status(200).send(data)
 	}catch(err){
 		console.log(err)
 	}
 }
 
 exports.add_payment = async (req, res) =>{
-		const {Train_id, qty, Total_price, status, attachment} = req.body;
+    const User_id = req.user;
+	const {Train_id, qty, status, attachment} = req.body;
+	const jumlah = qty;
+	// findOne tab;e Ticket
+	const Tbl_ticket = await Ticket.findOne({
+		where: {id:Train_id }
+	});
+	// findOne tbl payment
+	const Total_price = await Payment.findOne({
+		where: {id:Train_id }
+	});
+	// update qty tbl_ticket
+	await Tbl_ticket.update({
+		qty:Tbl_ticket.qty-jumlah
+	});
+	// create tbl_payment
 	try{
 		const payment = await Payment.create({
-			Train_id, qty, Total_price, status, attachment
+			User_id, Train_id, qty,  Total_price: jumlah * Tbl_ticket.price, status, attachment
 		})
-		const id = payment.id;
 		const data = await Payment.findOne({
-			where: {id},
+			where: {User_id},
 			include: [
 			{
 				model:Ticket,
 				as:"train",
-				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id"]
+				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id", "qty"]
+			},
+			{
+					model:User,
+					as:"user",
+					attributes: ["id","name","username","email","password","gender","phone","addres"]
 			}
+
 			],
 			attributes: {exclude: ["createdAt", "updatedAt"]}
 		});
@@ -56,7 +93,7 @@ exports.getOne_payment = async (req, res) => {
 			{
 				model:Ticket,
 				as:"train",
-				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id"]
+				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id", "qty"]
 			}
 			],
 			attributes: {exclude: ["createdAt", "updatedAt"]}
@@ -83,7 +120,7 @@ exports.edit_payment = async (req, res) => {
 			{
 				model:Ticket,
 				as:"train",
-				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id"]
+				attributes: ["id", "nameTrain", "typeTrain_id", "dateStart", "startStation", "startTime","destination","arrivalTime", "price", "user_id", "qty"]
 			}
 			],
 			attributes: {exclude: ["createdAt", "updatedAt"]}
@@ -96,3 +133,19 @@ exports.edit_payment = async (req, res) => {
 		console.log(err)
 	}
 }
+
+
+exports.delete_payment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const payment = await Payment.destroy({ where: { id } });
+    if (payment) {
+      res.status(200).send({ message: "success", data: payment });
+    } else {
+      const data = await Payment.findAll();
+      res.status(404).send({ message: "success", data });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -11,6 +11,9 @@ module.exports = {
       Train_id: {
         type: Sequelize.INTEGER
       },
+      User_id: {
+        type: Sequelize.INTEGER
+      },
       qty: {
         type: Sequelize.STRING
       },

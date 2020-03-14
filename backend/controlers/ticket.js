@@ -3,17 +3,25 @@ const models = require("../models");
 const Ticket = models.train;
 const Type = models.type_Train;
 const User = models.user;
+const sequelize =require("sequelize");
 
 exports.getAll_ticket = async (req, res) => {
 	try{
-		const {startTime} =req.params;
+		const {dateStart} =req.query;
 		const ticket = await Ticket.findAll({
+			 where: {dateStart: {[sequelize.Op.like]: `%${dateStart}`}},
 			include: [
 				{
 					model: Type,
 					as:"typeTrain",
 					attributes: ["id", "name"]
+				},
+				{
+					model:User,
+					as:"user",
+					attributes: ["id","name","username","email","password","gender","phone","addres"]
 				}
+
 			],
 			attributes:{exclude: ["type_Train","typeTrain_id","user_id","createdAt", "updatedAt" ]}
 		});
@@ -24,9 +32,6 @@ exports.getAll_ticket = async (req, res) => {
 }
 
 exports.getMy_ticket = async (req, res) => {
-	 // const token = req.header("Authorization").replace("Bearer ", "");
-  //   const user = jwt.verify(token, process.env.SECRET_KEY);
-  //    const id = req.user;
 	try{
 		const data = await Ticket.findAll({
 			include: [
@@ -41,7 +46,7 @@ exports.getMy_ticket = async (req, res) => {
 					attributes: ["id","name","username","email","password","gender","phone","addres"]
 				}
 			],
-			attributes:{exclude:["typeTrain_id","user_id","createdAt", "updatedAt"]}
+			attributes:{exclude:["createdAt", "updatedAt"]}
 		});
 		res.status(200).send({message: "success to find data", data})
 	}catch(err){
@@ -50,12 +55,13 @@ exports.getMy_ticket = async (req, res) => {
 }
 
 exports.add_ticket = async (req, res) => {
-	const {nameTrain, dateStart, startStation, typeTrain_id, startTime, destination, arrivalTime, price, qty} = req.body;
+	const {nameTrain, dateStart, startStation, user_id, typeTrain_id, startTime, destination, arrivalTime, price, qty} = req.body;
 	try{
 		const ticket = await Ticket.create(
 		{
 			nameTrain,
 			typeTrain_id,
+			user_id,
 			dateStart,
 			startStation,
 			startTime,
@@ -72,11 +78,41 @@ exports.add_ticket = async (req, res) => {
 					model: Type,
 					as:"typeTrain",
 					attributes: ["id", "name"]
+				},
+				{
+					model: User,
+					as:"user",
+					attributes: ["id","name","username","email","password","gender","phone","addres"]
 				}
 		    ],
-		    attributes: {exclude: ["user_id","createdAt", "updatedAt"]},
+		    attributes: {exclude: ["createdAt", "updatedAt"]},
 		    });
 		res.status(200).send({message: "success", data:data})
+	}catch(err){
+		console.log(err)
+	}
+}
+
+exports.getOne_ticket = async (req, res) => {
+	const {id} =req.params
+	try{
+		const data = await Ticket.findOne({
+			where: {id},
+			include: [
+				{
+					model:Type,
+					as:"typeTrain",
+					attributes: ["id", "name"]
+				},
+				{
+					model:User,
+					as:"user",
+					attributes: ["name","username","email","gender","phone","addres"]
+				}
+			],
+			attributes:{exclude:["createdAt", "updatedAt"]}
+		});
+		res.status(200).send({message: "success to find data", data})
 	}catch(err){
 		console.log(err)
 	}

@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.ENUM("0", "1"),
   }, {});
   user.associate = function(models) {
-    // associations can be defined here
   };
   return user;
 };
