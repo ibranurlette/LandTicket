@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const { login, register } = require("../controlers/auth");
-const { auth } = require("../middleware/auth");
+const { login, register,auth_reload } = require("../controlers/auth");
+const { auth,uploadupload } = require("../middleware/auth");
+const { upload } = require("../middleware/upload");
 
 const {getAll_ticket, getMy_ticket, add_ticket, getOne_ticket} = require("../controlers/ticket");
-const {geAll_payment, add_payment, getOne_payment, edit_payment, delete_payment} = require("../controlers/payment");
+const {geAll_payment, add_payment, getOne_payment, edit_payment, delete_payment, paymentProof} = require("../controlers/payment");
 const {getTypetrain} = require("../controlers/typetrain");
 const {get_user} = require("../controlers/user");
 
@@ -16,6 +17,7 @@ router.get("/", (req, res) => {
 // route auth
 router.post("/login", login);
 router.post("/register", register);
+router.get("/auth", auth, auth_reload);
 // route user
 router.get("/user",auth, get_user);
 router.get("/type_train", getTypetrain);
@@ -30,6 +32,7 @@ router.post("/payment", auth, add_payment)
 router.get("/payment/:id", auth, getOne_payment)
 router.put("/payment/:id", auth, edit_payment)
 router.delete("/payment/:id", delete_payment)
+router.post("/upload/:id", upload.single("payment"), paymentProof);
 
 
 

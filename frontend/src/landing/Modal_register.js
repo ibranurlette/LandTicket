@@ -40,43 +40,43 @@ class Modal_register extends Component {
 
 
   render() {
-     const {authenticated, error} = this.props.auth;
+     const {error} = this.props.auth;
     return (
       <main>
-          <Modal show={this.state.show} handleClose={this.hideModalRegister} className="modal_box_regist">
-        <form class="login-form_register" autocomplete="of">
+          <Modal show={this.state.show} onHide={this.hideModalRegister} className="modal_box_regist">
+        <form className="login-form_register" autoComplete="of">
         <h1 id="judul_register">Register</h1>
         <h4 className="error">{error}</h4>
-        <div class="txtb">
-          <input type="text" placeholder="name" name="name" onChange={this.onChange} autocomplete="of" required/>
+        <div className="txtb">
+          <input type="text" placeholder="name" name="name" onChange={this.onChange} autoComplete="of" required/>
         </div>
 
-        <div class="txtb">
-          <input type="text"  placeholder="username" name="username" onChange={this.onChange} autocomplete="of" required/>
+        <div className="txtb">
+          <input type="text"  placeholder="username" name="username" onChange={this.onChange} autoComplete="of" required/>
         </div>
-        <div class="txtb">
+        <div className="txtb">
           <input type="email"  placeholder="email" name="email" onChange={this.onChange} required/>
         </div>
-        <div class="txtb">
+        <div className="txtb">
           <input type="password"  placeholder="password" onChange={this.onChange} name="password" required/>
         </div>
-         <div class="txtb">
+         <div className="txtb">
           <select name="gender" onChange={this.onChange}>
             <option >your gender</option>
             <option >male</option>
             <option >female</option>
           </select>
         </div>
-        <div class="txtb">
+        <div className="txtb">
           <input type="text"  placeholder="phone" name="phone" onChange={this.onChange}/>
         </div>
-        <div class="txtb">
+        <div className="txtb">
           <textarea placeholder="addres" name="addres" onChange={this.onChange} required></textarea>
         </div>
         <Link to="/home">
-        <input type="submit" class="logbtn_login" value="Register" onClick={this.handle_register}/>
+        <input type="submit" className="logbtn_login" value="Register" onClick={this.handle_register}/>
         </Link>
-        <input type="submit" class="logbtn_close" value="Close" onClick={this.hideModalRegister}/>
+        <input type="submit" className="logbtn_close" value="Close" onClick={this.hideModalRegister}/>
       </form>
 
       </Modal>

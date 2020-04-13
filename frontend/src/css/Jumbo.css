@@ -99,7 +99,7 @@ margin-left: -420px;
 
 }
 #ticket_saya{
-  margin-left: 100px;
+  margin-left: 150px;
   font-size: 35px !important;
   /*margin-top: -50px !important;*/
   position: absolute;
@@ -358,14 +358,14 @@ margin-left: -420px;
   font-size: 40px;
 }
 #type_train{
-  margin-left: 40px;
+  margin-left: 40px !important;
 }
 #tanggal{
   margin-left: 40px;
   font-size: 17px
 }
 #name_train{
-  margin-left: 40px;
+  margin-left: 40px !important;
   font-size: 30px;
 }
 #pembayaran4{
@@ -373,7 +373,7 @@ margin-left: -420px;
 }
 #tombol_bayar_sekarang{
   margin-top:  550px;
-  margin-left:  110px;
+  /*margin-left:  110px;*/
   width:  400px;
   background: linear-gradient(120deg,#3498db,#8e44ad);
 }
@@ -385,7 +385,7 @@ margin-left: -420px;
   border:   2px solid rgb(106,102,220);
 }
 #struk2{
-  margin-left:  550px;
+  margin-left:  448px;
 
 }
 
@@ -400,16 +400,16 @@ margin-left: -420px;
   margin-top:15px;
 }
 #card_jumbo_invoice{
-  width: 695px;
-  margin-left: 95px;
+  width: 687px;
+  margin-left: -10px;
   background-color: #EDEDED !important;
-  margin-top: 190px;
+  margin-top: 173px;
   position: absolute;
 
 }
 #card_jumbo_invoice2{
   width: 695px;
-  margin-left: 110px;
+  /*margin-left: 110px;*/
   background-color: #EDEDED !important;
   margin-top: 20px;
   position: absolute;
@@ -417,7 +417,7 @@ margin-left: -420px;
 }
 #card_jumbo_invoice3{
   width: 400px;
-  margin-left: 110px;
+  /*margin-left: 110px;*/
   background-color: #white !important;
   margin-top: 430px;
   margin-bottom:  100px;
@@ -433,9 +433,10 @@ margin-left: -420px;
 }
 #card_jumbo_invoice4{
   position: absolute;
-  width: 400px;
-  margin-left: 850px;
-  margin-top:  -605px;
+  width:400px;
+  height: 320px;
+  margin-left: 710px;
+  margin-top:  -607px;
   background-color: #EDEDED !important;
   /*margin-top: 430px;*/
   /*margin-bottom:  100px;*/
@@ -443,7 +444,7 @@ margin-left: -420px;
 
 #rincian_harga{
   position:absolute;
-  margin-left:110px;
+  /*margin-left:110px;*/
   margin-top:   360px;
   font-size:  35px;
 }

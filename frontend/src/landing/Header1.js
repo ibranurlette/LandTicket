@@ -4,16 +4,15 @@ import { Navbar } from 'react-bootstrap';
 import Icon from '../img/kereta2.jpg';
 import Modal_register from './Modal_register';
 import Modal_login from './Modal_login';
-
 import HeaderNav from '../home/HomeHeader';
-
 import {connect} from 'react-redux';
-import {login} from '../client/_action/auth';
 import { Redirect} from "react-router-dom";
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
   render() {
-    const {data, isLogin} = this.props.auth
+    const {data, isLogin} = this.props.auth;
+    const token = localStorage.getItem("token")
+
     return (
       <Fragment>
         <Navbar className="header shadow">
@@ -25,9 +24,10 @@ class Header extends Component {
             <Navbar.Text>
             </Navbar.Text>
           </Navbar.Collapse>
-            {data?.status === "1" ? (
+        {/*{console.log('woi', data?.status, isL)*/}
+            {data?.status === "1" && isLogin ? (
               <Redirect to="/transaksi"/>
-              ) : isLogin ? (
+              ) : isLogin || token ? (
             <HeaderNav/>
             ): (
             <Fragment>
@@ -46,9 +46,9 @@ const mapStateToProps = state => {
     auth: state.auth
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (data) => dispatch(login(data))
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     login: (data) => dispatch(login(data))
+//   }
+// }
 export default connect(mapStateToProps)(Header);

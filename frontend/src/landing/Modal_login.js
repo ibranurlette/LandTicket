@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 
 import {connect} from 'react-redux';
 import {login} from '../client/_action/auth';
-import { MdErrorOutline } from 'react-icons/md';
 
 // component modal_login untuk manampilkan modal saat tombol login di klik
 class Modal_login extends Component {
@@ -31,26 +30,26 @@ class Modal_login extends Component {
     this.setState({[name]: value})
   }
   render() {
-    const {authenticated, error} = this.props.auth;
+    const {error} = this.props.auth;
     return (
       <main>
-      <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_box_login" >
+      <Modal show={this.state.show} onHide={this.hideModalLogin} id="modal_box_login" >
 {/* halaman login dengan html dan css*/}
-        <form class="login-form">
+        <form className="login-form">
         <h1>Login</h1>
         <h4 className="error">{error}</h4>
-        <div class="txtb">
-          <input type="text" placeholder="username" name="username" onChange={this.HandleChange} required controlId="validationCustom02"/>
+        <div className="txtb">
+          <input type="text" placeholder="username" name="username" onChange={this.HandleChange} required />
         </div>
 
-        <div class="txtb">
+        <div className="txtb">
           <input type="password" placeholder="password"  name="password" onChange={this.HandleChange}/>
 
         </div>
           <Link to="/home">
-        <input type="submit" class="logbtn_login" value="Login" onClick={this.Clicklogin}/>
+        <input type="submit" className="logbtn_login" value="Login" onClick={this.Clicklogin}/>
           </Link>
-        <input type="submit" class="logbtn_close" value="Close" onClick={this.hideModalLogin}/>
+        <input type="submit" className="logbtn_close" value="Close" onClick={this.hideModalLogin}/>
       </form>
         </Modal>
        <Button onClick={this.showModalLogin} className="tombol-login" ><p id="login">

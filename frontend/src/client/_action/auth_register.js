@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {AUTH} from '../config/constants';
 import {API} from '../config/api';
 

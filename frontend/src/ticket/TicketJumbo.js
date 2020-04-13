@@ -1,8 +1,9 @@
 import React, {Component , Fragment}  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Button, Col, Form, Card } from 'react-bootstrap';
+import { Col, Form, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getPayment } from '../client/_action/payment';
+import Modal_Bayar from './Modal_Bayar';
 // component jumbo untuk manmpikn jumbotron yang kita miliki
 class Jumbo extends Component  {
     componentDidMount(){
@@ -18,7 +19,7 @@ class Jumbo extends Component  {
             <div id="ticket_saya">Tiket saya</div>
             <br/><br/>
           {data.map((item, index) => (
-            <Card id="card_jumbo_ticket">
+            <Card key={index} id="card_jumbo_ticket">
            <Form id="form_jumbo_ticket1">
           <Form.Row id="form_jumbo_ticket">
             <Form.Group as={Col} controlId="formGridEmail" id="card_judul">
@@ -66,9 +67,7 @@ class Jumbo extends Component  {
                <p>{item?.train?.dateStart}</p>
             </Form.Group>
           </Form.Row>
-          <Button type="submit" id="tombol_cari_kereta2">
-            bayar sekarang
-          </Button>
+         <Modal_Bayar data={item}/>
           <div id="hr"/>
         </Form>
           </Card>

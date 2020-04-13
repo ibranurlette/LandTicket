@@ -55,3 +55,26 @@ try{
   console.log(err);
 }
 };
+
+exports.auth_reload = async (req, res) => {
+  try {
+    const id = req.user;
+    const data = await User.findOne({
+      where: { id },
+      attributes: {
+        exclude: ["password", "createdAt", "updatedAt"]
+      }
+    });
+    if (data) {
+      res.status(200).send({ status: true, message: "succes", data });
+    } else {
+      res
+        .status(404)
+        .send({ status: false, message: "user not found", data: {} });
+    }
+  } catch (err) {
+    res
+      .status(404)
+      .send({ status: false, message: "Authorization not Allowed" });
+  }
+};

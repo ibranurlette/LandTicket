@@ -1,12 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar } from 'react-bootstrap';
+import { Navbar,Dropdown } from 'react-bootstrap';
 import Icon from '../img/kereta2.jpg';
 import profile from '../img/user2.png';
-
+import {getUsers} from '../client/_action/user';
+import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
+import { TiTicket } from 'react-icons/ti';
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
+   componentDidMount(){
+    this.props.getUsers();
+  }
   render() {
+    const data_user = this.props.user.data;
     return (
       <Fragment>
         <Navbar className="header">
@@ -16,7 +23,16 @@ class Header extends Component {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-            <p id="profile">ibra&nbsp;&nbsp;&nbsp;<img alt="foto" src={profile} id="foto"/></p>
+           <Dropdown >
+            <Dropdown.Toggle variant = "none" id = "dropdown-basic" >
+            <p id = "profile" > {data_user.name} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
+            </Dropdown.Toggle>
+            <Dropdown.Menu >
+            <Link to = "/transaksi" >
+            <p> <TiTicket id="dropdown"/> Transaksi </p>
+            </Link>
+            </Dropdown.Menu>
+            </Dropdown>
             </Navbar.Text>
           </Navbar.Collapse>
         </Navbar>
@@ -24,4 +40,16 @@ class Header extends Component {
     )
   }
 }
-export default Header;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: () => dispatch(getUsers())
+  }
+}
+
+// export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

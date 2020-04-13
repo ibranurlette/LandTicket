@@ -86,6 +86,6 @@ width:  85px;
 #div_beli2{
   background: #d1cebd;
 }
-#name_train, #type_train{
-  margin-left: -2px;
+#name_train_detail{
+  font-size: 30px;
 }

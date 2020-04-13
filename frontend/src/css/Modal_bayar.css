@@ -1,0 +1,17 @@
+.file_upload{
+	position: absolute;
+	margin-top:-40px;
+	margin-left: 475px;
+}
+#preview_image{
+	width: 100px;
+	height: 100px;
+	margin-bottom: -400px;
+	margin-left: 76px;
+}
+#ticket_saya_bayar{
+	 margin-left: -15px;
+	  font-size: 35px !important;
+	  /*margin-top: -50px !important;*/
+	  position: absolute;
+}

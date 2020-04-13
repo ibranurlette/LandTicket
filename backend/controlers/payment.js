@@ -42,8 +42,10 @@ exports.geAll_payment = async (req, res) => {
 
 exports.add_payment = async (req, res) =>{
     const User_id = req.user;
-	const {Train_id, qty, status, attachment} = req.body;
+
+	const {Train_id,qty, status, attachment} = req.body;
 	const jumlah = qty;
+	const total = qty-jumlah;
 	// findOne tab;e Ticket
 	const Tbl_ticket = await Ticket.findOne({
 		where: {id:Train_id }
@@ -54,7 +56,7 @@ exports.add_payment = async (req, res) =>{
 	});
 	// update qty tbl_ticket
 	await Tbl_ticket.update({
-		qty:Tbl_ticket.qty-jumlah
+		qty:Tbl_ticket.total
 	});
 	// create tbl_payment
 	try{
@@ -144,6 +146,37 @@ exports.delete_payment = async (req, res) => {
     } else {
       const data = await Payment.findAll();
       res.status(404).send({ message: "success", data });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.paymentProof = async (req, res) => {
+  try {
+    const { filename } = req.file;
+    const { id } = req.params;
+    if (!filename) {
+      res.status(400).json({
+        status: "failed",
+        code: "400",
+        message: "Please upload file"
+      });
+    } else {
+      await Payment.update(
+        {
+          status: "Pending",
+          attachment: filename
+        },
+        { where: { id } }
+      );
+
+      res.status(200).json({
+        status: "success",
+        code: "200",
+        message: "file uploaded successfully",
+        data: filename
+      });
     }
   } catch (err) {
     console.log(err);

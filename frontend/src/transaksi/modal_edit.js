@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal } from 'react-bootstrap';
-import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
 import { updatePayment } from '../client/_action/update_payment';
 
@@ -42,25 +41,25 @@ class Modal_edit extends Component {
      const data = this.props.data
     return (
       <main>
-      <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_box_login1" >
+      <Modal show={this.state.show} onHide={this.hideModalLogin} id="modal_box_login1" >
 {/* halaman login dengan html dan css*/}
-        <form class="login-form1">
+        <form className="login-form1">
         <h1>edit form</h1>
 
-        <div class="txtb1">
-          <input type="text" placeholder="user" value={data?.user?.name}/>
+        <div className="txtb1">
+          <input type="text" placeholder="user" value={data?.user?.name} onChange={this.HandleChange}/>
         </div>
-        <div class="txtb1">
-          <input type="text" placeholder="ticket" value={data?.train?.startStation}/>
+        <div className="txtb1">
+          <input type="text" placeholder="ticket" value={data?.train?.startStation} onChange={this.HandleChange}/>
         </div>
-        <div class="txtb1">
-          <input type="text" placeholder="bukti tranfer" value="1.jpg"/>
+        <div className="txtb1">
+          <input type="text" placeholder="bukti tranfer" value="1.jpg" onChange={this.HandleChange}/>
         </div>
-        <div class="txtb1">
+        <div className="txtb1">
           <input type="text" placeholder="status payment" value={this.state.status} name="status" onChange={this.HandleChange}/>
         </div>
-        <input type="submit" class="logbtn_login1" value="update" onClick={e=>this.handleUpdate(e)}/>
-        <input type="submit" class="logbtn_close1" value="Close"/>
+        <input type="submit" className="logbtn_login1" value="update" onClick={e=>this.handleUpdate(e)}/>
+        <input type="submit" className="logbtn_close1" value="Close" onClick={this.hideModalLogin}/>
       </form>
         </Modal>
        <Button onClick={this.showModalLogin} variant="warning" >

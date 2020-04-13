@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Modal, Row, Col, Form, Card } from 'react-bootstrap';
 import struk from '../img/struk.jpeg';
-import qr_code from '../img/qr.png';
-import { connect } from 'react-redux';
-import { getUsers } from '../client/_action/user';
 class Modal_detail extends Component {
    state = { show: false};
 
@@ -21,7 +18,7 @@ class Modal_detail extends Component {
       const data = this.props.data
     return (
       <main>
-      <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_detail" size="lg">
+      <Modal show={this.state.show} onHide={this.hideModalLogin} id="modal_detail" size="lg">
             <Card id="card_jumbo_detail">
            <Row>
            <Col sm={5}>
@@ -29,7 +26,6 @@ class Modal_detail extends Component {
              <font id="detail_kereta"><strong>kereta api</strong></font>
              <p id="tanggal">{data?.train?.dateStart}</p>
 
-             
              <p id="div4"/>
             <p id="div5"/>
             <p id="div6"/>
@@ -41,8 +37,8 @@ class Modal_detail extends Component {
            </Col>
           <Col sm={4}>
               <div id="div">
-          <font id="name_train"><strong>{data?.train?.nameTrain}</strong></font>
-             <p id="type_train">{data?.train?.typeTrain?.name}</p>
+          <font id="name_train_detail"><strong>{data?.train?.nameTrain}</strong></font>
+             <p id="type_train_detail">{data?.train?.typeTrain?.name}</p>
 
               <font id="kota"><strong>jakrata</strong></font>
              <p id=""><small>{data?.train?.startStation}r</small></p>

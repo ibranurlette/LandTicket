@@ -10,7 +10,6 @@
   height: 269px;
 }
 #profile{
- margin-top: 14px;
  float: right;
 }
 #foto{
@@ -18,7 +17,8 @@
   height: 50px;
 }
 #dropdown{
-  margin-right: 20px;  
+  margin-right: 20px;
+  margin-bottom: 10px;
   width: 30px;
   height: 30px;
   margin-left: 5px;
@@ -26,12 +26,14 @@
   cursor:pointer;
 }
 #dropdown_logout{
-  margin-right: 20px;
+  margin-right: 25px;
   width: 30px;
   height: 30px;
   margin-left: 5px;
   color:#d63447;
-  cursor:pointer;
+}
+#dropdown_logout2{
+  cursor: pointer;
 }
 #dropdown2{
   margin-right: 24px;

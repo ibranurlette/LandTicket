@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     case `${GET_USERS}_REJECTED`:
       return {
         ...state,
-        error: action.payload.response.data.message,
+        error: true,
         loading: false
       };
     default:

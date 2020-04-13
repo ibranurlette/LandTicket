@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Modal, Row, Col, Form, Card } from 'react-bootstrap';
-import struk from '../img/struk.jpeg';
-import qr_code from '../img/qr.png';
 import { connect } from 'react-redux';
-import { getUsers } from '../client/_action/user';
 import { Beli_ticket } from "../client/_action/beli_ticket";
 import { TiShoppingCart } from 'react-icons/ti';
-import {
-  Link
-} from "react-router-dom";
 // import Modal_selamat from './Modal_selamat';
 class Modal_beli extends Component {
 
@@ -52,7 +46,7 @@ class Modal_beli extends Component {
     const data = this.props.data
     return (
       <main>
-      <Modal show={this.state.show} handleClose={this.hideModalLogin} id="modal_detail" size="lg">
+      <Modal show={this.state.show} onHide={this.hideModalLogin} id="modal_detail" size="lg">
             <Card id="card_jumbo_beli">
            <Row>
            <Col sm={6}>
@@ -86,7 +80,7 @@ class Modal_beli extends Component {
                 <Form.Label><center>Qty</center></Form.Label><br/>
                   <Button id="indec" onClick={this.handlePlus}><font id="plus">+</font></Button>
                     <input value={this.state.counter} id="qty" name="counter" onChange={this.handleCounter}/>
-                    {this.state.counter==0 ?(
+                    {this.state.counter===0 ?(
                           <p id="display"/>
                       ): (
                         <Button id="indec2" onClick={this.handleMin} ><font id="min" >-</font></Button>
@@ -130,9 +124,9 @@ class Modal_beli extends Component {
           </Button>
           </Card>
         </Modal>
-        <p onClick={this.showModalLogin}><p id="shoping"/>
+        <div onClick={this.showModalLogin}><p id="shoping"/>
         <TiShoppingCart id="shoping_beli" onClick={this.handlGetOne_ticket}/>
-        </p>
+        </div>
       </main>
     );
   }

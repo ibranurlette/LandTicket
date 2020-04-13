@@ -4,12 +4,12 @@ import { Jumbotron, Button, Row, Col, Form, Card, Table } from 'react-bootstrap'
 import logo from '../img/belanja2.jpg';
 import { MdSwapHoriz } from 'react-icons/md';
 import { IoMdTrain } from 'react-icons/io';
-import { TiShoppingCart } from 'react-icons/ti';
 import { connect } from 'react-redux';
 import { getMyticket } from '../client/_action/ticket';
 import { get_ticket } from '../client/_action/cari_ticket';
 import moment from "moment";
 import Modal_beli from './modal_beli';
+import {login} from '../client/_action/auth';
 // component jumbo untuk manmpikn jumbotron yang kita miliki
 class Jumbo extends Component  {
   constructor(props) {
@@ -23,7 +23,6 @@ class Jumbo extends Component  {
  componentDidMount(){
   const dateStart = this.state.ds
     this.props.get_ticket(dateStart);
-    console.log(dateStart, "ini datestart")
   }
   handlesearch = (e) => {
     e.preventDefault();
@@ -70,6 +69,8 @@ handleTukar = (e) => {
       return `${hours} Jam ${minutes} Menit`;
     };
      const {data} = this.props.Cari_ticket;
+     const {isLogin} = this.props.auth
+     const token = localStorage.getItem("token")
      // const data2 = this.props.Cari_ticket.data;
     return (
       <Fragment>
@@ -90,12 +91,12 @@ handleTukar = (e) => {
            <Form id="form_jumbo">
           <Form.Row id="form_jumbo1">
 
-            <Form.Group as={Col} controlId="formGridEmail" id="form_judul_kereta">
+            <Form.Group as={Col} id="form_judul_kereta">
             <IoMdTrain id="train"/>
               <h5 id="judul_kereta">Tiket kerta api</h5>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col}>
               <div id="tiket_kereta_api">Tiket kereta api</div>
               <Form.Label><strong>Asal</strong></Form.Label>
                 <Form.Control as="select" id="select_Asal" >
@@ -112,13 +113,13 @@ handleTukar = (e) => {
               <Form.Label className="mt-2"><strong>Tanggal Berangkat</strong></Form.Label>
               <div id="flex_box">
               <Form.Control type="date" id="date" className="mr-4" name="ds" onChange={this.handleChange}/>
-              <p id="pulang_pergi">
+              <div id="pulang_pergi">
               <Form.Check type="checkbox" label="Pulang Pergi"/>
-              </p>
+              </div>
               </div>
 
               </Form.Group>
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={Col}>
               <Form.Label className="tujuan" name="destination"><strong>Tujuan</strong></Form.Label>
               <Form.Control as="select" id="select_Asal" >
                {data.map((item3, index) => (
@@ -162,21 +163,29 @@ handleTukar = (e) => {
             <th>tiba</th>
             <th>durasi</th>
             <th>harga per orang</th>
+             {isLogin || token ?(
             <th>beli</th>
+             ):(
+              ""
+              )}
           </tr>
         </thead>
 
        {data.map((item, index) => (
-        <tbody>
+        <tbody  key={index}>
           <tr>
-            <td key={index}>{item.id}</td>
-            <td key={index}>{item.nameTrain}</td>
-            <td key={index}><font><strong>{item.startTime}</strong></font><p>{item.startStation}</p></td>
-            <td key={index}><font><strong>{item.arrivalTime}</strong></font><p>{item.destination}</p></td>
+            <td>{item.id}</td>
+            <td>{item.nameTrain}</td>
+            <td><font><strong>{item.startStation}</strong></font><br/><small>{item.startTime}</small></td>
+            <td><font><strong>{item.destination}</strong></font><br/><small>{item.arrivalTime}</small></td>
             <td>{getDuration(item.startTime, item.arrivalTime)}</td>
-            <td key={index}>Rp. {item.price}</td>
+            <td>Rp. {item.price}</td>
             <td>
+            {isLogin || token ?(
               <Modal_beli data={item}/>
+            ):(
+              ""
+              )}
             </td>
           </tr>
         </tbody>
@@ -192,14 +201,16 @@ handleTukar = (e) => {
 const mapStateToProps = state => {
   return {
     ticket: state.ticket,
-    Cari_ticket: state.Cari_ticket
+    Cari_ticket: state.Cari_ticket,
+    auth: state.auth
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getMyticket: () => dispatch(getMyticket()),
-    get_ticket: (dateStart) => dispatch(get_ticket(dateStart))
+    get_ticket: (dateStart) => dispatch(get_ticket(dateStart)),
+    login: (data) => dispatch(login(data))
 
   }
 }

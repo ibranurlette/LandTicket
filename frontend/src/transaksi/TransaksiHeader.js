@@ -8,16 +8,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown } from 'react-bootstrap';
 import { TiTicket } from 'react-icons/ti';
 import { IoMdLogOut } from 'react-icons/io';
-import {login} from '../client/_action/auth';
-import {register} from '../client/_action/auth_register';
+// import {login} from '../client/_action/auth';
+// import {register} from '../client/_action/auth_register';
 import {connect} from 'react-redux';
+import {getUsers} from '../client/_action/user';
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
+   componentDidMount(){
+    this.props.getUsers();
+  }
   render() {
-     const {data} = this.props.auth
+    const {data} = this.props.user;
+    console.log(data, "ini datanya")
+     // const {data} = this.props.auth
     const handleLogout = () => {
         localStorage.clear();
-        window.location.reload(false)
+        window.location.reload()
       }
     return (
       <Fragment>
@@ -30,13 +36,15 @@ class Header extends Component {
             <Navbar.Text >
             <Dropdown >
             <Dropdown.Toggle variant = "none" id = "dropdown-basic" >
-            <p id = "profile" > {data?.username} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
+            <p id = "profile" > {data.name} &nbsp;&nbsp;&nbsp;<img alt="foto" src = {profile} id="foto"/></p>
             </Dropdown.Toggle>
             <Dropdown.Menu >
             <Link to = "/admin" >
             <p> <TiTicket id="dropdown"/> tambah ticket </p>
             </Link>
-            <p onClick={handleLogout}><IoMdLogOut id="dropdown_logout" /> <Link>logout</Link> </p>
+             <Link to = "/" >
+            <div onClick={handleLogout}><IoMdLogOut id="dropdown_logout" />logout </div>
+            </Link>
             </Dropdown.Menu>
             </Dropdown>
             </Navbar.Text>
@@ -48,13 +56,15 @@ class Header extends Component {
 }
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    // auth: state.auth,
+    user: state.user
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    login: (data) => dispatch(login(data)),
-    register: (data) => dispatch(register(data))
+    // login: (data) => dispatch(login(data)),
+    // register: (data) => dispatch(register(data)),
+    getUsers: () => dispatch(getUsers())
   }
 }
 

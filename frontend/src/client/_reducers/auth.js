@@ -4,6 +4,7 @@ import { AUTH } from "../config/constants";
 const initialState = {
   authenticated: false,
   // user: null,
+  data: [],
   error:null,
   isLogin:false,
   loading: false
