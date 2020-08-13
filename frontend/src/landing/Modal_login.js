@@ -1,75 +1,98 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Modal } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Button, Modal, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import {connect} from 'react-redux';
-import {login} from '../client/_action/auth';
+import { connect } from "react-redux";
+import { login } from "../client/_action/auth";
 
 // component modal_login untuk manampilkan modal saat tombol login di klik
 class Modal_login extends Component {
-   state = { show: false};
+  state = { show: false };
 
-    showModalLogin = () => {
+  showModalLogin = () => {
     this.setState({ show: true });
   };
 
   hideModalLogin = () => {
     let ibra = this.setState({ show: false });
-    setInterval(ibra, 500)
+    setInterval(ibra, 500);
   };
-  Clicklogin = e => {
+  Handlelogin = (e) => {
     e.preventDefault();
     const data = this.state;
-    this.props.login(data)
-  }
+    this.props.login(data);
+  };
   HandleChange = (e) => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({[name]: value})
-  }
+    this.setState({ [name]: value });
+  };
+
   render() {
-    const {error} = this.props.auth;
+    const { error } = this.props.auth;
     return (
       <main>
-      <Modal show={this.state.show} onHide={this.hideModalLogin} id="modal_box_login" >
-{/* halaman login dengan html dan css*/}
-        <form className="login-form">
-        <h1>Login</h1>
-        <h4 className="error">{error}</h4>
-        <div className="txtb">
-          <input type="text" placeholder="username" name="username" onChange={this.HandleChange} required />
-        </div>
+        <Modal show={this.state.show} onHide={this.hideModalLogin}>
+          <Modal.Header closeButton>
+            <Modal.Title>Form Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form className="container mt-4 mb-4">
+              <h4 className="error">{error}</h4>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
 
-        <div className="txtb">
-          <input type="password" placeholder="password"  name="password" onChange={this.HandleChange}/>
-
-        </div>
-          <Link to="/home">
-        <input type="submit" className="logbtn_login" value="Login" onClick={this.Clicklogin}/>
-          </Link>
-        <input type="submit" className="logbtn_close" value="Close" onClick={this.hideModalLogin}/>
-      </form>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Button
+                variant="warning"
+                className="mr-2"
+                onClick={this.hideModalLogin}
+              >
+                Cancel
+              </Button>
+              <Link to="/home"></Link>
+              <Button
+                variant="success"
+                type="submit"
+                onClick={this.Handlelogin}
+              >
+                Masuk
+              </Button>
+            </Form>
+          </Modal.Body>
         </Modal>
-       <Button onClick={this.showModalLogin} className="tombol-login" ><p id="login">
-        Login</p></Button>
+        <Button onClick={this.showModalLogin} variant="primary">
+          Login
+        </Button>
       </main>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.auth
-  }
-}
-const mapDispatchToProps = dispatch => {
+    auth: state.auth,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
-    login: (data) => dispatch(login(data))
-  }
-}
+    login: (data) => dispatch(login(data)),
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Modal_login);
-
-
-

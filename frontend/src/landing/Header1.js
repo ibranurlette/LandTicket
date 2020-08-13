@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import Icon from "../img/kereta2.jpg";
 import ModalRegister from "./Modal_register";
 import ModalLogin from "./Modal_login";
@@ -15,28 +14,26 @@ class Header extends Component {
 
     return (
       <Fragment>
-        <Navbar className="header shadow">
-          <Navbar.Brand href="#home" className="mt-3 ml-3">
-            <p className="LandTick">
-              LandTick
-              <img alt="gambar" id="gambar" src={Icon} />
-            </p>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">
+            <img alt="gambar" id="gambar" src={Icon} />
+            LandTick
           </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text></Navbar.Text>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              {data.status === "1" && isLogin ? (
+                <Redirect to="transaksi" />
+              ) : isLogin || token ? (
+                <HeaderNav />
+              ) : (
+                <Fragment>
+                  <ModalRegister />
+                  <ModalLogin />
+                </Fragment>
+              )}
+            </Nav>
           </Navbar.Collapse>
-          {/*{console.log('woi', data?.status, isL)*/}
-          {data?.status === "1" && isLogin ? (
-            <Redirect to="/transaksi" />
-          ) : isLogin || token ? (
-            <HeaderNav />
-          ) : (
-            <Fragment>
-              <ModalRegister />
-              <ModalLogin id="modal-login" />
-            </Fragment>
-          )}
         </Navbar>
       </Fragment>
     );

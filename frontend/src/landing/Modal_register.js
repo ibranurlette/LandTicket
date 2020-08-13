@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Modal } from 'react-bootstrap';
-import { Link} from "react-router-dom";
-import { connect } from 'react-redux';
-import { register } from '../client/_action/auth_register';
-
+import React, { Component } from "react";
+import { Button, Modal, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { register } from "../client/_action/auth_register";
 
 // component modal_register untuk manampilkan modal saat tombol register di klik
 class Modal_register extends Component {
@@ -16,9 +14,9 @@ class Modal_register extends Component {
 
   hideModalRegister = () => {
     let ibra = this.setState({ show: false });
-    setInterval(ibra, 100)
+    setInterval(ibra, 100);
   };
-  handle_register = e => {
+  handle_register = (e) => {
     e.preventDefault();
     const data = {
       name: this.state.name,
@@ -29,80 +27,133 @@ class Modal_register extends Component {
       phone: this.state.phone,
       addres: this.state.addres,
     };
-    this.props.register(data)
-  }
-   onChange = (e) => {
+    this.props.register(data);
+  };
+  HandleChange = (e) => {
     e.preventDefault();
     this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
+      [e.target.name]: e.target.value,
+    });
+  };
 
   render() {
-     const {error} = this.props.auth;
+    const { error } = this.props.auth;
     return (
       <main>
-          <Modal show={this.state.show} onHide={this.hideModalRegister} className="modal_box_regist">
-        <form className="login-form_register" autoComplete="of">
-        <h1 id="judul_register">Register</h1>
-        <h4 className="error">{error}</h4>
-        <div className="txtb">
-          <input type="text" placeholder="name" name="name" onChange={this.onChange} autoComplete="of" required/>
-        </div>
+        <Modal show={this.state.show} onHide={this.hideModalRegister}>
+          <Modal.Header closeButton>
+            <Modal.Title>Form Register</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form className="container mt-4 mb-4">
+              <h4 className="error">{error}</h4>
+              <Form.Group>
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Gender</Form.Label>
+                <Form.Control as="select">
+                  <option name="gender" onChange={this.HandleChange}>
+                    male
+                  </option>
+                  <option name="gender" onChange={this.HandleChange}>
+                    female
+                  </option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="phone"
+                  placeholder="Phone"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Addres</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="addres"
+                  placeholder="Addres"
+                  onChange={this.HandleChange}
+                />
+              </Form.Group>
 
-        <div className="txtb">
-          <input type="text"  placeholder="username" name="username" onChange={this.onChange} autoComplete="of" required/>
-        </div>
-        <div className="txtb">
-          <input type="email"  placeholder="email" name="email" onChange={this.onChange} required/>
-        </div>
-        <div className="txtb">
-          <input type="password"  placeholder="password" onChange={this.onChange} name="password" required/>
-        </div>
-         <div className="txtb">
-          <select name="gender" onChange={this.onChange}>
-            <option >your gender</option>
-            <option >male</option>
-            <option >female</option>
-          </select>
-        </div>
-        <div className="txtb">
-          <input type="text"  placeholder="phone" name="phone" onChange={this.onChange}/>
-        </div>
-        <div className="txtb">
-          <textarea placeholder="addres" name="addres" onChange={this.onChange} required></textarea>
-        </div>
-        <Link to="/home">
-        <input type="submit" className="logbtn_login" value="Register" onClick={this.handle_register}/>
-        </Link>
-        <input type="submit" className="logbtn_close" value="Close" onClick={this.hideModalRegister}/>
-      </form>
-
-      </Modal>
-
-
-          <div className="right">
-        { /* <p id="para">have account or not ?</p> */ }
-              <Button variant="secondary" onClick={this.showModalRegister} className="mt-3 mr-3 tombol_register "><p id="sign_up">Sign up</p></Button>
-          </div>
+              <Button
+                variant="warning"
+                className="mr-2"
+                onClick={this.hideModalLogin}
+              >
+                Cancel
+              </Button>
+              <Link to="/home"></Link>
+              <Button
+                variant="success"
+                type="submit"
+                onClick={this.handle_register}
+              >
+                Register
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
+        <Button
+          variant="secondary"
+          className="mr-2 "
+          onClick={this.showModalRegister}
+        >
+          Sign up
+        </Button>
       </main>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.auth
-  }
-}
+    auth: state.auth,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    register: (data) => dispatch(register(data))
-   }
-}
-
+    register: (data) => dispatch(register(data)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal_register);
 
