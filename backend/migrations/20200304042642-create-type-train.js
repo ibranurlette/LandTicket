@@ -1,27 +1,27 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('type_Trains', {
+    return queryInterface.createTable("type_Trains", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.ENUM("ekonomi", "bisnis", "eksekutif")
+        type: Sequelize.ENUM("ekonomi", "bisnis", "eksekutif"),
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        allowNull: true,
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        allowNull: true,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('type_Trains');
-  }
+    return queryInterface.dropTable("type_Trains");
+  },
 };

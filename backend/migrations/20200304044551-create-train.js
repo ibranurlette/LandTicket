@@ -1,54 +1,54 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('trains', {
+    return queryInterface.createTable("trains", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nameTrain: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       typeTrain_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       dateStart: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       startStation: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       startTime: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
       },
       destination: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       arrivalTime: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       qty: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        allowNull: true,
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        allowNull: true,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('trains');
-  }
+    return queryInterface.dropTable("trains");
+  },
 };
