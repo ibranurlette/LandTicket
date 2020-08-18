@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Form, Card } from "react-bootstrap";
+import { Col, Form, Card, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getPayment } from "../client/_action/payment";
 import ModalBayar from "./Modal_Bayar";
@@ -17,112 +16,90 @@ class Jumbo extends Component {
         <br />
         <br />
         <br />
-        <br />
-        <br />
         <Col>
-          <div id="ticket_saya">Tiket saya</div>
-          <br />
-          <br />
+          <h2 style={{ marginLeft: "150px" }}>Tiket Saya</h2>
           {data.map((item, index) => (
-            <Card key={index} id="card_jumbo_ticket">
-              <Form id="form_jumbo_ticket1">
-                <Form.Row id="form_jumbo_ticket">
-                  <Form.Group
-                    as={Col}
-                    controlId="formGridEmail"
-                    id="card_judul"
-                  >
-                    <h6 id="judul_kereta_ticket">
-                      <strong>{item?.train?.nameTrain}</strong>
-                    </h6>
-                    <p id="Eksekutif">{item?.train?.typeTrain?.name}</p>
-                    {item.status === "approvad" ? (
-                      <p id="approvad">{item.status}</p>
-                    ) : (
-                      <p id="pending">{item.status}</p>
-                    )}
-                    <p id="no_tanda">
-                      <strong>name</strong>
-                    </p>
-                    <p id="no_tanda2">{item?.user?.name}</p>
-                  </Form.Group>
+            <Container>
+              <Card
+                className="container"
+                key={index}
+                style={{ marginBottom: "30px" }}
+              >
+                <Form className="mt-4">
+                  <Form.Row>
+                    <Form.Group as={Col}>
+                      <h5>
+                        <strong>{item?.train?.nameTrain}</strong>
+                      </h5>
+                      <p className="ml-2">{item?.train?.typeTrain?.name}</p>
+                      {item.status === "approvad" ? (
+                        <p id="approvad">{item.status}</p>
+                      ) : (
+                        <p id="pending">{item.status}</p>
+                      )}
+                      <p className="mt-5">
+                        <strong>Nama</strong>
+                      </p>
+                      <p>{item?.user?.name}</p>
+                    </Form.Group>
+                    <div id="div123">
+                      <p id="div1" />
+                      <p id="div3" />
+                      <p id="div2" />
+                    </div>
 
-                  <p id="div1" />
-                  <p id="div3" />
-                  <p id="div2" />
+                    <Form.Group as={Col}>
+                      <font>
+                        <strong>{item?.train?.startTime}</strong>
+                      </font>
+                      <br />
+                      <small>{item?.train?.dateStart}</small>
+                      <br />
+                      <br />
 
-                  <Form.Group as={Col} controlId="formGridEmail" id="time">
-                    <font>
-                      <strong>{item?.train?.startTime}</strong>
-                    </font>
-                    <br />
-                    <small id="mar">{item?.train?.dateStart}</small>
-                    <br />
-                    <br />
+                      <font>
+                        <strong>{item?.train?.arrivalTime}</strong>
+                      </font>
+                      <br />
+                      <small>{item?.train?.dateStart}</small>
+                      <br />
+                      <br />
+                      <p>
+                        <strong>Pemesan</strong>
+                      </p>
+                      <p>{item?.user?.username}</p>
+                    </Form.Group>
 
-                    <font>
-                      <strong>{item?.train?.arrivalTime}</strong>
-                    </font>
-                    <br />
-                    <small>{item?.train?.dateStart}</small>
-                    <br />
-                    <br />
-                    <p>
-                      <strong>nama pemesan</strong>
-                    </p>
-                    <p>{item?.user?.username}</p>
-                  </Form.Group>
+                    <Form.Group as={Col}>
+                      <font>
+                        <strong>Jakarta</strong>
+                      </font>
+                      <br />
+                      <small>{item?.train?.startStation}</small>
+                      <br />
+                      <br />
+                      <font>
+                        <strong>Surabaya</strong>
+                      </font>
+                      <br />
+                      <small>{item?.train?.destination}</small>
+                      <br />
+                      <br />
+                      <p>
+                        <strong>No Handphone</strong>
+                      </p>
+                      <p>{item?.user?.phone}</p>
+                    </Form.Group>
 
-                  <Form.Group
-                    as={Col}
-                    controlId="formGridPassword"
-                    id="stasiun"
-                  >
-                    <font>
-                      <strong>jakarta</strong>
-                    </font>
-                    <br />
-                    <small>{item?.train?.startStation}</small>
-                    <br />
-                    <br />
-                    <font>
-                      <strong>surabaya</strong>
-                    </font>
-                    <br />
-                    <small>{item?.train?.destination}</small>
-                    <br />
-                    <br />
-                    <p>
-                      <strong>no handphone</strong>
-                    </p>
-                    <p>{item?.user?.phone}</p>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    controlId="formGridPassword"
-                    id="contack"
-                  >
-                    <p>
-                      <strong>email</strong>
-                    </p>
-                    <p>{item?.user?.email}</p>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Col}
-                    controlId="formGridPassword"
-                    id="name_kereta"
-                    className="mr-4 mt-3"
-                  >
-                    <h1>kereta api</h1>
-                    <p>{item?.train?.dateStart}</p>
-                  </Form.Group>
-                </Form.Row>
-                <ModalBayar data={item} />
-                <div id="hr" />
-              </Form>
-            </Card>
+                    <Form.Group as={Col} className="text-center">
+                      <h3>Kereta Api</h3>
+                      <p>{item?.train?.dateStart}</p>
+                      <ModalBayar data={item} />
+                    </Form.Group>
+                  </Form.Row>
+                </Form>
+              </Card>
+            </Container>
           ))}
         </Col>
       </Fragment>

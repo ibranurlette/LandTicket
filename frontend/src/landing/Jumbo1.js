@@ -8,10 +8,10 @@ import {
   Form,
   Card,
   Table,
+  Container,
 } from "react-bootstrap";
 import logo from "../img/belanja2.jpg";
 import { MdSwapHoriz } from "react-icons/md";
-import { IoMdTrain } from "react-icons/io";
 import { connect } from "react-redux";
 import { getMyticket } from "../client/_action/ticket";
 import { get_ticket } from "../client/_action/cari_ticket";
@@ -96,143 +96,136 @@ class Jumbo extends Component {
             </Col>
           </Row>
         </Jumbotron>
-        <div id="jumbo3">
-          <Col>
-            <Card id="card_jumbo" className="shadow">
-              <Form id="form_jumbo">
-                <Form.Row id="form_jumbo1">
-                  <Form.Group as={Col} id="form_judul_kereta">
-                    <IoMdTrain id="train" />
-                    <h5 id="judul_kereta">Tiket kerta api</h5>
-                  </Form.Group>
-
-                  <Form.Group as={Col}>
-                    <div id="tiket_kereta_api">Tiket kereta api</div>
-                    <Form.Label>
-                      <strong>Asal</strong>
-                    </Form.Label>
-                    <Form.Control as="select" id="select_Asal">
-                      {data.map((item2, index) => (
-                        <option
-                          key={index}
+        <div>
+          <div className="container">
+            <Card border="light">
+              <Card.Header>Tiket Kereta</Card.Header>
+              <Card.Body>
+                <Form>
+                  <Form.Row>
+                    <Col sm={5}>
+                      <Form.Group>
+                        <Form.Label>
+                          <strong>Asal</strong>
+                        </Form.Label>
+                        {/* <Form.Control as="select" id="select_Asal">
+                          {data.map((item2, index) => (
+                            <option
+                              key={index}
+                              onChange={this.handleAsal}
+                              value={this.state.valueAsal}
+                            >
+                              {item2.startStation}
+                            </option>
+                          ))}
+                        </Form.Control> */}
+                        <Form.Control
+                          type="text"
+                          placeholder="asal"
                           onChange={this.handleAsal}
                           value={this.state.valueAsal}
-                        >
-                          {item2.startStation}
-                        </option>
-                      ))}
-                    </Form.Control>
-                    {/*<Form.Control type="text" placeholder="asal" id="asal"  onChange={this.handleAsal} value={this.state.valueAsal}/>*/}
-                    <div onClick={this.handleTukar}>
-                      <p id="arah" />
-                      <MdSwapHoriz id="swap" />
-                    </div>
+                        />
 
-                    <Form.Label className="mt-2">
-                      <strong>Tanggal Berangkat</strong>
-                    </Form.Label>
-                    <div id="flex_box">
-                      <Form.Control
-                        type="date"
-                        id="date"
-                        className="mr-4"
-                        name="ds"
-                        onChange={this.handleChange}
-                      />
-                      <div id="pulang_pergi">
-                        <Form.Check type="checkbox" label="Pulang Pergi" />
+                        <Form.Label className="mt-2">
+                          <strong>Tanggal Berangkat</strong>
+                        </Form.Label>
+                        <div>
+                          <Form.Control
+                            type="date"
+                            className="mr-4"
+                            name="ds"
+                            onChange={this.handleChange}
+                          />
+                        </div>
+                      </Form.Group>
+                    </Col>
+                    <Col sm={2}>
+                      <div onClick={this.handleTukar}>
+                        <MdSwapHoriz className="mx-auto d-block mt-5" />
                       </div>
-                    </div>
-                  </Form.Group>
-                  <Form.Group as={Col}>
-                    <Form.Label className="tujuan" name="destination">
-                      <strong>Tujuan</strong>
-                    </Form.Label>
-                    <Form.Control as="select" id="select_Asal">
-                      {data.map((item3, index) => (
-                        <option
-                          key={index}
+                    </Col>
+                    <Col sm={5}>
+                      <Form.Group>
+                        <Form.Label name="destination">
+                          <strong>Tujuan</strong>
+                        </Form.Label>
+                        {/* <Form.Control as="select">
+                          {data.map((item3, index) => (
+                            <option
+                              key={index}
+                              onChange={this.handleTujuan}
+                              value={this.state.valueTujuan}
+                            >
+                              {item3.destination}
+                            </option>
+                          ))}
+                        </Form.Control> */}
+                        <Form.Control
+                          type="text"
+                          placeholder="tujuan"
                           onChange={this.handleTujuan}
                           value={this.state.valueTujuan}
-                        >
-                          {item3.destination}
-                        </option>
-                      ))}
-                    </Form.Control>
-                    {/*<Form.Control type="text" placeholder="tujuan" id="tujuan"  onChange={this.handleTujuan}    value={this.state.valueTujuan}/>*/}
-                    <Form.Label className="mt-2 ">
-                      <strong>Dewasa</strong>
-                    </Form.Label>
-                    <div id="flex_box">
-                      <Form.Control as="select" id="select_jumbo">
-                        <option>1</option>
-                        <option>2</option>
-                      </Form.Control>
+                        />
 
-                      <Form.Label className="mt-2" id="bayi">
-                        <strong>Bayi</strong>
-                      </Form.Label>
-                      <Form.Control as="select" id="bayi_select">
-                        <option>1</option>
-                        <option>2</option>
-                      </Form.Control>
-                    </div>
-                  </Form.Group>
-                </Form.Row>
-                <div id="flex_box">
-                  <Button
-                    type="submit"
-                    id="tombol_cari_kereta"
-                    onClick={this.handlesearch}
-                  >
-                    Cari Kereta
-                  </Button>
-                </div>
-              </Form>
+                        <div>
+                          <Button
+                            type="submit"
+                            style={{ marginTop: "40px" }}
+                            onClick={this.handlesearch}
+                          >
+                            Cari Kereta
+                          </Button>
+                        </div>
+                      </Form.Group>
+                    </Col>
+                  </Form.Row>
+                </Form>
+              </Card.Body>
             </Card>
-          </Col>
+          </div>
 
-          <Jumbotron className="text-center bg-transparent jumbo2">
-            <Table responsive>
+          <Container style={{ marginBottom: "70px" }}>
+            <Table bordered hover>
               <thead>
-                <tr id="table_judul">
-                  <th>no</th>
-                  <th>nama kereta</th>
-                  <th>berangkat</th>
-                  <th>tiba</th>
-                  <th>durasi</th>
-                  <th>harga per orang</th>
-                  {isLogin || token ? <th>beli</th> : ""}
+                <tr>
+                  <th>No</th>
+                  <th>Nama kereta</th>
+                  <th>Berangkat</th>
+                  <th>Tiba</th>
+                  <th>Durasi</th>
+                  <th>Harga / Orang</th>
+                  {isLogin || token ? <th>Beli</th> : ""}
                 </tr>
               </thead>
-
               {data.map((item, index) => (
                 <tbody key={index}>
                   <tr>
                     <td>{item.id}</td>
                     <td>{item.nameTrain}</td>
                     <td>
-                      <font>
-                        <strong>{item.startStation}</strong>
-                      </font>
+                      <strong>{item.startStation}</strong>
                       <br />
                       <small>{item.startTime}</small>
                     </td>
                     <td>
-                      <font>
-                        <strong>{item.destination}</strong>
-                      </font>
+                      <strong>{item.destination}</strong>
                       <br />
                       <small>{item.arrivalTime}</small>
                     </td>
                     <td>{getDuration(item.startTime, item.arrivalTime)}</td>
                     <td>Rp. {item.price}</td>
-                    <td>{isLogin || token ? <ModalBeli data={item} /> : ""}</td>
+                    {isLogin || token ? (
+                      <td>
+                        <ModalBeli data={item} />
+                      </td>
+                    ) : (
+                      ""
+                    )}
                   </tr>
                 </tbody>
               ))}
             </Table>
-          </Jumbotron>
+          </Container>
         </div>
       </Fragment>
     );

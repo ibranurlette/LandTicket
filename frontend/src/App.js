@@ -17,7 +17,6 @@ import HomeHeader from "./home/HomeHeader";
 import TicketHeader from "./ticket/TicketHeader";
 import TicketJumbo from "./ticket/TicketJumbo";
 
-import TransaksiHeader from "./transaksi/TransaksiHeader";
 import TransaksiJumbo from "./transaksi/TransaksiJumbo";
 
 import AdminHeader from "./adminForm/AdminHeader";
@@ -85,7 +84,6 @@ class Transaksi extends Component {
   render() {
     return (
       <div>
-        <TransaksiHeader />
         <TransaksiJumbo />
       </div>
     );

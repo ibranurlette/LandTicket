@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Table, Card } from "react-bootstrap";
 import ModalEdit from "./modal_edit";
 import ModalDetail from "./modal_detail";
 import Delete from "./modal_delete";
 import { connect } from "react-redux";
 import { getPayment } from "../client/_action/payment";
+import HeaderNav from "./TransaksiHeader";
 // component jumbo untuk manmpikn jumbotron yang kita miliki
 class Jumbo extends Component {
   componentDidMount() {
@@ -15,11 +15,12 @@ class Jumbo extends Component {
     const { data } = this.props.payment;
     return (
       <Fragment>
-        <Container id="transaksi">
-          <p id="list_transaksi">
+        <HeaderNav />
+        <Container className="mt-3">
+          <h3>
             <strong>List Transaksi</strong>
-          </p>
-          <Table responsive>
+          </h3>
+          <Table bordered hover>
             <thead>
               <tr>
                 <th>no</th>
@@ -57,13 +58,13 @@ class Jumbo extends Component {
                   </td>
                   <td>{item.status}</td>
                   <td>
-                    <div className="mr-2">
+                    <div className="mb-1">
                       <ModalDetail data={item} />
                     </div>
-                    <div className="mr-2">
+                    <div className="mb-1">
                       <ModalEdit id="modal-login" data={item} />
                     </div>
-                    <div className="mr-2">
+                    <div className="mb-1">
                       <Delete data={item} />
                     </div>
                   </td>
