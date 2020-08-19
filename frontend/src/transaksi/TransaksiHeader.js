@@ -24,40 +24,6 @@ class Header extends Component {
     };
     return (
       <Fragment>
-        {/* <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">
-            <h3>
-              LandTick
-              <img id="gambar" alt="ibra nurlette" src={Icon} />
-            </h3>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Dropdown>
-                <Dropdown.Toggle variant="none" id="dropdown-basic">
-                  <p id="profile">
-                    {data.name} &nbsp;&nbsp;&nbsp;
-                    <img alt="foto" src={profile} id="foto" />
-                  </p>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Link to="/admin">
-                    <p>
-                      <TiTicket id="dropdownTiketSaya" /> Tambah Ticket{" "}
-                    </p>
-                  </Link>
-                  <Link to="/">
-                    <div onClick={handleLogout}>
-                      <IoMdLogOut id="dropdownLogout" />
-                      Logout{" "}
-                    </div>
-                  </Link>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Navbar> */}
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="#home">
             LandTick
@@ -66,7 +32,11 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <NavDropdown title="Profile" id="basic-nav-dropdown">
+              <p id="profile">
+                {data.name} &nbsp;&nbsp;&nbsp;
+                <img alt="foto" src={profile} id="foto" />
+              </p>
+              <NavDropdown id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/admin">
                     <TiTicket id="dropdownTiketSaya" /> Tambah Ticket
@@ -74,10 +44,10 @@ class Header extends Component {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link to="/">
-                    <div onClick={handleLogout}>
-                      <IoMdLogOut id="dropdownLogout" />
-                      Logout{" "}
-                    </div>
+                    {/* <div> */}
+                    <IoMdLogOut id="dropdownLogout" onClick={handleLogout} />
+                    Logout
+                    {/* </div> */}
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>

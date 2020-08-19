@@ -34,18 +34,15 @@ class Delete extends Component {
         <Modal show={this.state.login} onHide={this.closeModal}>
           <Modal.Body>
             <h5>
-              <b>name</b> {data?.user?.name}
+              <b>Pemesan Dengan Nama : {data.user.name} </b>
             </h5>
-            <h4>
-              Yakin Hapus Data{" "}
-              <b style={{ color: "red" }}>{data?.user?.username}</b> ?
-            </h4>
+            <h4>Yakin Ingin Hapus Data Ini ?</h4>
           </Modal.Body>
           <Modal.Footer>
-            <Button size="sm" variant="danger" onClick={this.handleDelete}>
-              Ya
+            <Button size="sm" variant="primary" onClick={this.handleDelete}>
+              Iya
             </Button>
-            <Button size="sm" variant="info" onClick={this.closeModal}>
+            <Button size="sm" variant="warning" onClick={this.closeModal}>
               Tidak
             </Button>
           </Modal.Footer>
