@@ -19,12 +19,8 @@ class Jumbo extends Component {
         <Col>
           <h2 style={{ marginLeft: "150px" }}>Tiket Saya</h2>
           {data.map((item, index) => (
-            <Container>
-              <Card
-                className="container"
-                key={index}
-                style={{ marginBottom: "30px" }}
-              >
+            <Container key={index}>
+              <Card className="container" style={{ marginBottom: "30px" }}>
                 <Form className="mt-4">
                   <Form.Row>
                     <Form.Group as={Col}>

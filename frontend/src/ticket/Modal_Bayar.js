@@ -233,9 +233,11 @@ class Modal_Bayar extends Component {
                   })
                 }
               >
-                <Container bsPrefix="modalBody">
-                  <label>Pembayaran Berhasil !!!</label>
-                </Container>
+                {/* <Container bsPrefix="modalBody"> */}
+                <label style={{ color: "green" }}>
+                  Pembayaran Berhasil !!!
+                </label>
+                {/* </Container> */}
               </Modal>
             </div>
           </Modal.Body>

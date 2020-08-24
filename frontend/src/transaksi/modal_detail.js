@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, Row, Col, Container, Card } from "react-bootstrap";
-import struk from "../img/struk.jpeg";
+// import struk from "../img/struk.jpeg";
 class ModalDetail extends Component {
   state = { show: false };
 
@@ -9,8 +9,8 @@ class ModalDetail extends Component {
   };
 
   hideModalDetail = () => {
-    let ibra = this.setState({ show: false });
-    setInterval(ibra, 500);
+    let hide = this.setState({ show: false });
+    setInterval(hide, 500);
   };
 
   render() {

@@ -3,7 +3,7 @@ import { Navbar } from "react-bootstrap";
 import Icon from "../img/kereta2.jpg";
 import profile from "../img/user2.png";
 import { Link } from "react-router-dom";
-import { Dropdown, NavDropdown, Nav } from "react-bootstrap";
+import { NavDropdown, Nav } from "react-bootstrap";
 import { TiTicket } from "react-icons/ti";
 import { IoMdLogOut } from "react-icons/io";
 // import {login} from '../client/_action/auth';
@@ -33,22 +33,21 @@ class Header extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <p id="profile">
-                {data.name} &nbsp;&nbsp;&nbsp;
                 <img alt="foto" src={profile} id="foto" />
               </p>
-              <NavDropdown id="basic-nav-dropdown">
+              <NavDropdown title={data.name} id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/admin">
                     <TiTicket id="dropdownTiketSaya" /> Tambah Ticket
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/">
-                    {/* <div> */}
-                    <IoMdLogOut id="dropdownLogout" onClick={handleLogout} />
-                    Logout
-                    {/* </div> */}
-                  </Link>
+                  <div onClick={handleLogout}>
+                    <Link to="/">
+                      <IoMdLogOut id="dropdownLogout" />
+                      Logout
+                    </Link>
+                  </div>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

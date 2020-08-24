@@ -39,7 +39,9 @@ class Modal_login extends Component {
           </Modal.Header>
           <Modal.Body>
             <Form className="container mt-4 mb-4">
-              <h4 className="error">{error}</h4>
+              <h4 style={{ color: "red" }} className="error">
+                {error}
+              </h4>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>username</Form.Label>
                 <Form.Control
