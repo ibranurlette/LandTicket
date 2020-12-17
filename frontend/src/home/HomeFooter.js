@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { GiEternalLove } from 'react-icons/gi';
 
 // component Footer untuk menampilkan footer kita

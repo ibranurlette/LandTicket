@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { connect } from "react-redux";
+
 import { deletePayment } from "../client/_action/hapus_payment";
 
 class Delete extends Component {
@@ -29,12 +30,13 @@ class Delete extends Component {
   };
   render() {
     const data = this.props.data;
+    console.log("DATA_ITEM_DELETE", data);
     return (
       <Fragment>
         <Modal show={this.state.login} onHide={this.closeModal}>
           <Modal.Body>
             <h5>
-              <b>Pemesan Dengan Nama : {data.user.name} </b>
+              <b>Pemesan Dengan Nama : {data.user.name}</b>
             </h5>
             <h4>Yakin Ingin Hapus Data Ini ?</h4>
           </Modal.Body>

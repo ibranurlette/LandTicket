@@ -10,8 +10,10 @@ import {
 } from "react-bootstrap";
 import { TiWarningOutline } from "react-icons/ti";
 import { connect } from "react-redux";
+
 import qr_code from "../img/qr.png";
 import { uploadProof } from "../client/_action/upload";
+
 class Modal_Bayar extends Component {
   state = {
     show: false,

@@ -1,12 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import Icon from "../img/kereta2.jpg";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
 import ModalRegister from "./Modal_register";
 import ModalLogin from "./Modal_login";
 import HeaderNav from "../home/HomeHeader";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+
+import Icon from "../img/kereta2.jpg";
+
 // component Header untuk menampikan halaman header di langi page
+
 class Header extends Component {
   render() {
     const { data, isLogin } = this.props.auth;

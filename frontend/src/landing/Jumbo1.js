@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Jumbotron,
   Button,
@@ -10,14 +9,18 @@ import {
   Table,
   Container,
 } from "react-bootstrap";
-import logo from "../img/belanja2.jpg";
-import { MdSwapHoriz } from "react-icons/md";
 import { connect } from "react-redux";
+import moment from "moment";
+import { MdSwapHoriz } from "react-icons/md";
+
+import ModalBeli from "./modal_beli";
+
+import logo from "../img/belanja2.jpg";
+
 import { getMyticket } from "../client/_action/ticket";
 import { get_ticket } from "../client/_action/cari_ticket";
-import moment from "moment";
-import ModalBeli from "./modal_beli";
 import { login } from "../client/_action/auth";
+
 // component jumbo untuk manmpikn jumbotron yang kita miliki
 class Jumbo extends Component {
   constructor(props) {

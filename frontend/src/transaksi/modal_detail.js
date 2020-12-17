@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Modal, Row, Col, Container, Card } from "react-bootstrap";
 // import struk from "../img/struk.jpeg";
+
 class ModalDetail extends Component {
   state = { show: false };
 

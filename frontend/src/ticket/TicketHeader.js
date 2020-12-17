@@ -1,11 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Dropdown } from "react-bootstrap";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai";
+
 import Icon from "../img/kereta2.jpg";
 import profile from "../img/user2.png";
+
 import { getUsers } from "../client/_action/user";
-import { connect } from "react-redux";
-import { AiOutlineHome } from "react-icons/ai";
-import { Link } from "react-router-dom";
+
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
   componentDidMount() {

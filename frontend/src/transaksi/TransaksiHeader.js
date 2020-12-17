@@ -1,15 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { Navbar } from "react-bootstrap";
-import Icon from "../img/kereta2.jpg";
-import profile from "../img/user2.png";
-import { Link } from "react-router-dom";
 import { NavDropdown, Nav } from "react-bootstrap";
 import { TiTicket } from "react-icons/ti";
 import { IoMdLogOut } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import Icon from "../img/kereta2.jpg";
+import profile from "../img/user2.png";
+
+import { getUsers } from "../client/_action/user";
 // import {login} from '../client/_action/auth';
 // import {register} from '../client/_action/auth_register';
-import { connect } from "react-redux";
-import { getUsers } from "../client/_action/user";
+
 // component Header untuk menampikan halaman header di langi page
 class Header extends Component {
   componentDidMount() {

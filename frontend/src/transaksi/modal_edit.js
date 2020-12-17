@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { connect } from "react-redux";
+
 import { updatePayment } from "../client/_action/update_payment";
 
 // component modal_login untuk manampilkan modal saat tombol login di klik

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal, Row, Col, Form, Card } from "react-bootstrap";
 import { connect } from "react-redux";
-import { Beli_ticket } from "../client/_action/beli_ticket";
 import { TiShoppingCart } from "react-icons/ti";
+
+import { Beli_ticket } from "../client/_action/beli_ticket";
+
 // import Modal_selamat from './Modal_selamat';
+
 class Modal_beli extends Component {
   state = { show: false, counter: 0, status: "pending" };
 

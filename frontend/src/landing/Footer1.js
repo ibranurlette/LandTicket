@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // component Footer untuk menampilkan footer kita
 class Footer extends Component {

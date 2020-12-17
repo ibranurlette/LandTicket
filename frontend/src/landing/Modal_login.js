@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 import { connect } from "react-redux";
+
 import { login } from "../client/_action/auth";
 
 // component modal_login untuk manampilkan modal saat tombol login di klik
 class Modal_login extends Component {
-  state = { show: false };
+  state = { show: false, validated: false };
 
   showModalLogin = () => {
     this.setState({ show: true });
@@ -20,7 +20,14 @@ class Modal_login extends Component {
   Handlelogin = (e) => {
     e.preventDefault();
     const data = this.state;
-    this.props.login(data);
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    let setValidated = this.setState({ validated: true });
+    this.props.login(data, setValidated);
   };
   HandleChange = (e) => {
     e.preventDefault();
@@ -38,10 +45,11 @@ class Modal_login extends Component {
             <Modal.Title>Form Login</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form className="container mt-4 mb-4">
-              <h4 style={{ color: "red" }} className="error">
-                {error}
-              </h4>
+            <Form
+              validated={this.state.validated}
+              className="container mt-4 mb-4"
+            >
+              {error && <Alert variant="danger">{error}</Alert>}
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>username</Form.Label>
                 <Form.Control
@@ -49,7 +57,11 @@ class Modal_login extends Component {
                   name="username"
                   placeholder="Username"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Username anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
@@ -59,7 +71,11 @@ class Modal_login extends Component {
                   type="password"
                   placeholder="Password"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Password anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Button
                 variant="warning"

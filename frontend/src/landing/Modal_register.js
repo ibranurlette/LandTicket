@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Alert, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import { register } from "../client/_action/auth_register";
 
 // component modal_register untuk manampilkan modal saat tombol register di klik
 class Modal_register extends Component {
-  state = { show: false };
+  state = { show: false, validated: false };
 
   showModalRegister = () => {
     this.setState({ show: true });
@@ -18,6 +19,14 @@ class Modal_register extends Component {
   };
   handle_register = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    let setValidated = this.setState({ validated: true });
+
     const data = {
       name: this.state.name,
       username: this.state.username,
@@ -27,7 +36,7 @@ class Modal_register extends Component {
       phone: this.state.phone,
       addres: this.state.addres,
     };
-    this.props.register(data);
+    this.props.register(data, setValidated);
   };
   HandleChange = (e) => {
     e.preventDefault();
@@ -45,8 +54,11 @@ class Modal_register extends Component {
             <Modal.Title>Form Register</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form className="container mt-4 mb-4">
-              <h4 className="error">{error}</h4>
+            <Form
+              validated={this.state.validated}
+              className="container mt-4 mb-4"
+            >
+              {error && <Alert variant="danger">{error}</Alert>}
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -54,7 +66,11 @@ class Modal_register extends Component {
                   name="name"
                   placeholder="Name"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Nama anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Username</Form.Label>
@@ -63,7 +79,11 @@ class Modal_register extends Component {
                   name="username"
                   placeholder="Username"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Username anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Email</Form.Label>
@@ -72,7 +92,11 @@ class Modal_register extends Component {
                   name="email"
                   placeholder="Email"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Email anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -81,11 +105,15 @@ class Modal_register extends Component {
                   type="password"
                   placeholder="Password"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Password anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Gender</Form.Label>
-                <Form.Control as="select">
+                <Form.Control as="select" required>
                   <option name="gender" onChange={this.HandleChange}>
                     male
                   </option>
@@ -93,6 +121,9 @@ class Modal_register extends Component {
                     female
                   </option>
                 </Form.Control>
+                <Form.Control.Feedback type="invalid">
+                  Gender anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Phone</Form.Label>
@@ -101,16 +132,24 @@ class Modal_register extends Component {
                   name="phone"
                   placeholder="Phone"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Phone anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label>Addres</Form.Label>
+                <Form.Label>Alamat</Form.Label>
                 <Form.Control
                   type="text"
                   name="addres"
                   placeholder="Addres"
                   onChange={this.HandleChange}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Alamat anda belum disi
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Button

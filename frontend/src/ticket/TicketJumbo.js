@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Col, Form, Card, Container } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getPayment } from "../client/_action/payment";
+
 import ModalBayar from "./Modal_Bayar";
+
+import { getPayment } from "../client/_action/payment";
+
 // component jumbo untuk manmpikn jumbotron yang kita miliki
 class Jumbo extends Component {
   componentDidMount() {
