@@ -4,9 +4,9 @@ import React, { Component } from "react";
 class Footer extends Component {
   render() {
     return (
-      <footer className="text-center footer1">
+      <footer className="text-center footerContainer">
         <div className="container">
-          <h1 className="footer2">&#169;2021 Created By Ibra Nurlette</h1>
+          <h1 className="footerTitle">&#169;2021 Created By Ibra Nurlette</h1>
         </div>
       </footer>
     );

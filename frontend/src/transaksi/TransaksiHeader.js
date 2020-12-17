@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Icon from "../img/kereta2.jpg";
-import profile from "../img/user2.png";
 
 import { getUsers } from "../client/_action/user";
 // import {login} from '../client/_action/auth';
@@ -35,9 +34,6 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <p id="profile">
-                <img alt="foto" src={profile} id="foto" />
-              </p>
               <NavDropdown title={data.name} id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/admin">

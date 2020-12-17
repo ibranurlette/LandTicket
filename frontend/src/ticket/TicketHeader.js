@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 
 import Icon from "../img/kereta2.jpg";
-import profile from "../img/user2.png";
 
 import { getUsers } from "../client/_action/user";
 
@@ -18,27 +17,21 @@ class Header extends Component {
     const { data } = this.props.user;
     return (
       <Fragment>
-        <Navbar className="header">
-          <Navbar.Brand href="#home" className="mt-3 ml-3">
-            <p className="LandTick">
-              LandTick
-              <img id="gambar" alt="ibra nurlette" src={Icon} />
-            </p>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">
+            <img alt="gambar" id="gambar" src={Icon} />
+            LandTick
           </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Navbar.Text>
               <Dropdown>
                 <Dropdown.Toggle variant="none" id="dropdown-basic">
-                  <div id="profile">
-                    {data.name} &nbsp;&nbsp;&nbsp;
-                    <img alt="foto" src={profile} id="foto" />
-                  </div>
+                  <div id="profile">{data.name}</div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Link to="/">
                     <div>
-                      {" "}
                       <AiOutlineHome id="dropdownTiketSaya" /> Home{" "}
                     </div>
                   </Link>

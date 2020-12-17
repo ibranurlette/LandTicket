@@ -1,21 +1,7 @@
-.header {
-  background-color: #f5f5f5;
-  height: 55px;
-  width: 100%;
-  position: fixed !important;
-  z-index: 1;
-}
-.header2 {
-  background-color: #ed7b82;
-  height: 269px;
-}
 #profile {
   float: right;
 }
-#foto {
-  width: 50px;
-  height: 50px;
-}
+
 #dropdownTiketSaya {
   margin-right: 10px;
   margin-bottom: 5px;
@@ -35,25 +21,11 @@
 #dropdownLogoutContainer {
   cursor: pointer;
 }
-#dropdown2 {
-  margin-right: 24px;
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  color: #ffa41b;
-  cursor: pointer;
-}
+
 #gambar {
   width: 50px;
   height: 50px;
   margin-bottom: 5px;
   margin-left: 30px;
   color: orange !important;
-}
-.LandTick {
-  margin-bottom: 20px;
-  color: #333333 !important;
-  font-size: 45px;
-  font-family: Times-New-Roman;
-  margin-left: 126px;
 }

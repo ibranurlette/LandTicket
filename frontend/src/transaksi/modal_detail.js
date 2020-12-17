@@ -32,9 +32,6 @@ class ModalDetail extends Component {
                     </h3>
                     <p>{data.train.dateStart}</p>
                   </div>
-                  <p id="div4" />
-                  <p id="div5" />
-                  <p id="div6" />
                   <div className="ml-5">
                     <font>
                       <strong>{data.train.startTime}</strong>

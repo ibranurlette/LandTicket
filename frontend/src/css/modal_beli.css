@@ -7,75 +7,11 @@
   color: #6968c1;
   cursor: pointer;
 }
-#indec,
-#indec2 {
-  width: 30px !important;
-  height: 30px !important;
-  margin-top: -5px;
-}
+
 #display {
   display: none;
 }
-#indec2 {
-  background: #d63447;
-  border: 1px solid #d1cebd;
-  font-weight: 900;
-}
-#plus,
-#min {
-  position: absolute;
-  margin-top: -14px;
-  margin-left: -5px;
-}
 
-#indec {
-  background: #f6eedf;
-  color: black;
-  font-weight: 900;
-  border: 1px solid #d1cebd;
-}
-#indec3 {
-  position: absolute;
-  margin-top: 190px;
-  margin-left: -140px;
-}
-
-#botton_beli_sekarang {
-  width: 330px !important;
-  position: absolute;
-  margin-top: 448px;
-  margin-left: 355px;
-  background: linear-gradient(120deg, #3498db, #8e44ad);
-  border: none;
-}
-#botton_close_beli {
-  margin-left: 10px;
-  margin-top: 9px;
-  width: 330px;
-  background: linear-gradient(120deg, #d63447, #d63447, #f67575);
-  border: none;
-  border-radius: none !important;
-}
 #qty {
   width: 100px;
-}
-#detail_beli {
-  font-size: 40px;
-  margin-left: 10px;
-}
-#div_beli {
-  margin-top: 60px;
-  margin-left: -43px;
-}
-#card_jumbo_beli {
-  position: absolute;
-  width: 700px;
-  height: 500px;
-  background-color: #ededed !important;
-}
-#name_beli {
-  margin-left: 50px;
-}
-#name_pemesan_beli {
-  margin-left: -70px;
 }

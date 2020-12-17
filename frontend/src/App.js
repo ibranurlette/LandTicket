@@ -1,27 +1,31 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+
 import "./css/Footer.css";
+
 import "./css/Header.css";
+
 import "./css/Jumbo.css";
-import "./css/edit_transaki.css";
+
+import "./css/edit_transaki.css"; /*not yet*/
+
 import "./css/modal_detail.css";
+
 import "./css/modal_beli.css";
+
 import "./css/Modal_bayar.css";
+
 import Header from "./landing/Header1";
 import Footer from "./landing/Footer1";
 import Jumbo from "./landing/Jumbo1";
-
 import HomeHeader from "./home/HomeHeader";
-
 import TicketHeader from "./ticket/TicketHeader";
 import TicketJumbo from "./ticket/TicketJumbo";
-
 import TransaksiJumbo from "./transaksi/TransaksiJumbo";
-
 import AdminHeader from "./adminForm/AdminHeader";
 import AdminJumbo from "./adminForm/AdminJumbo";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 class App extends Component {
   render() {
     return (
@@ -51,7 +55,7 @@ class App extends Component {
 class Landing extends Component {
   render() {
     return (
-      <div className="app-body">
+      <div>
         <Header />
         <Jumbo />
         <Footer />

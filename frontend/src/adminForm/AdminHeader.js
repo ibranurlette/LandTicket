@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Icon from "../img/kereta2.jpg";
-import profile from "../img/user2.png";
 
 import { getUsers } from "../client/_action/user";
 
@@ -18,22 +17,17 @@ class Header extends Component {
     const data_user = this.props.user.data;
     return (
       <Fragment>
-        <Navbar className="header">
-          <Navbar.Brand href="#home" className="mt-3 ml-3">
-            <p className="LandTick">
-              LandTick
-              <img id="gambar" alt="ibra nurlette" src={Icon} />
-            </p>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">
+            <img alt="gambar" id="gambar" src={Icon} />
+            LandTick
           </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Navbar.Text>
               <Dropdown>
                 <Dropdown.Toggle variant="none" id="dropdown-basic">
-                  <p id="profile">
-                    {data_user.name} &nbsp;&nbsp;&nbsp;
-                    <img alt="foto" src={profile} id="foto" />
-                  </p>
+                  <p id="profile">{data_user.name}</p>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Link to="/transaksi">
